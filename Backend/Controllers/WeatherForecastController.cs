@@ -335,6 +335,216 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpGet("SOdailyavgWaitTVal/{selDate}")]
+        public async Task<IActionResult> SOdailyAvgWaitTVal(DateTime selDate)
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                TimeSpan value =  today.Subtract(selDate);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQtMZrpKeMDke_MQ-2GaHVHgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("IWBdailyAvgWaitTVal/{selDate}")]
+        public async Task<IActionResult> IWBdailyAvgWaitTVal(DateTime selDate)
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                TimeSpan value =  today.Subtract(selDate);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvWLBAFJ2TUWlf-WK9vpFHwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("DIESELdailyAvgWaitTVal/{selDate}")]
+        public async Task<IActionResult> DIESELdailyAvgWaitTVal(DateTime selDate)
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                TimeSpan value =  today.Subtract(selDate);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQEgikTfxvRESnesr4fjxtxwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("GAS95dailyAvgWaitTVal/{selDate}")]
+        public async Task<IActionResult> GAS95dailyAvgWaitTVal(DateTime selDate)
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                TimeSpan value =  today.Subtract(selDate);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQEUq7d1pTYkeLV6ga4uj7VQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("OWBdailyAvgWaitTVal/{selDate}")]
+        public async Task<IActionResult> OWBdailyAvgWaitTVal(DateTime selDate)
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                TimeSpan value =  today.Subtract(selDate);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQqbtERL5W3U-gwc7iicbzjwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
         [HttpGet("dailyTruckInVal/{selDate}")]
         public async Task<IActionResult> dailyTruckInVal(DateTime selDate)
         {
@@ -1068,6 +1278,221 @@ namespace Backend.Controllers
                 int value2 = Convert.ToInt32(value.TotalDays);
 
                 string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQi259JiczK0-PUMCwxPGVJgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgQ1lDTEUgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("SOmoAvgWaitTVal")]
+        public async Task<IActionResult> SOmoAvgWaitTVal()
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                DateTime month = new DateTime(2017,3,31);
+                TimeSpan value =  today.Subtract(month);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQb8aCx9Xoskm752qdOuaAywMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("IWBmoAvgWaitTVal")]
+        public async Task<IActionResult> IWBmoAvgWaitTVal()
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                DateTime month = new DateTime(2017,3,31);
+                TimeSpan value =  today.Subtract(month);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQq9Fn6jKFZEWE7n0mFLXfmgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("DIESELmoAvgWaitTVal")]
+        public async Task<IActionResult> DIESELmoAvgWaitTVal()
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                DateTime month = new DateTime(2017,3,31);
+                TimeSpan value =  today.Subtract(month);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ1MvOamkwMkaxPr0VdzCL6AMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("GAS95moAvgWaitTVal")]
+        public async Task<IActionResult> GAS95moAvgWaitTVal()
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                DateTime month = new DateTime(2017,3,31);
+                TimeSpan value =  today.Subtract(month);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQh7g9kA2zpkyT3RBHoL7bTwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                string content = await response.Content.ReadAsStringAsync();
+
+                var data = (JArray)JObject.Parse(content)["Items"];
+                var result = new JArray();
+
+                foreach(var item in data)
+                {
+                    if(item["Good"].Value<bool>() == true)
+                    {
+                        var dataPair = new JObject();
+                        dataPair.Add("Timestamp",item["Timestamp"].Value<string>());
+                        dataPair.Add("value", item["Value"].Value<double>());
+                        result.Add(dataPair);
+                    }
+                }
+
+                return Ok(new {result=result, message="sucees"});
+           } 
+            catch (Exception ex)
+            {
+                return StatusCode(500, new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("OWBmoAvgWaitTVal")]
+        public async Task<IActionResult> OWBmoAvgWaitTVal()
+        {
+            try
+            {
+                var credentrials = new NetworkCredential("group2","inc.382");  // using username & password for login 
+                HttpClientHandler clientHandler = new HttpClientHandler { Credentials = credentrials };
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }; // acess to https
+                HttpClient client = new HttpClient(clientHandler);
+
+                DateTime today = DateTime.Today;
+                DateTime month = new DateTime(2017,3,31);
+                TimeSpan value =  today.Subtract(month);
+                int value2 = Convert.ToInt32(value.TotalDays);
+
+                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQtOhLixf8X0OM5y52k23ZHQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
