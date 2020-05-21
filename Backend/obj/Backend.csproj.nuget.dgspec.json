@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rusdee/Desktop/WebProgramming/BackendWorkshop/Backend.csproj": {}
+    "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj": {}
   },
   "projects": {
-    "/Users/rusdee/Desktop/WebProgramming/BackendWorkshop/Backend.csproj": {
+    "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rusdee/Desktop/WebProgramming/BackendWorkshop/Backend.csproj",
+        "projectUniqueName": "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "/Users/rusdee/Desktop/WebProgramming/BackendWorkshop/Backend.csproj",
+        "projectPath": "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj",
         "packagesPath": "/Users/rusdee/.nuget/packages/",
-        "outputPath": "/Users/rusdee/Desktop/WebProgramming/BackendWorkshop/obj/",
+        "outputPath": "/Users/rusdee/Desktop/WebProgramming/Backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rusdee/.nuget/NuGet/NuGet.Config"
