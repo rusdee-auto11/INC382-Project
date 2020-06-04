@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using System.Net;
+using Mapster;
 
 namespace Backend.Controllers
 {
@@ -34,36 +35,36 @@ namespace Backend.Controllers
         // CRUD
         // Create
         // https://localhost:5001/api/postdata
-        [HttpPost("postdata")]
-        public IActionResult PostData(TagValue result)
-        {
-            try
-            {
-                var results = _databaseContext.TagValue.Add(result);
-                _databaseContext.SaveChanges();
-                return Ok( new{result=result, message="sucess"});
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new{result=ex, message="fail"});
-            }
-        }
+        // [HttpPost("postdata")]
+        // public IActionResult PostData(TagValue result)
+        // {
+        //     try
+        //     {
+        //         var results = _databaseContext.TagValue.Add(result);
+        //         _databaseContext.SaveChanges();
+        //         return Ok( new{result=result, message="sucess"});
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return StatusCode(500, new{result=ex, message="fail"});
+        //     }
+        // }
 
         // Read
         // https://localhost:5001/api/getdata
-        [HttpGet("getdata")]
-        public IActionResult GetData()
-        {
-            try
-            {
-                var tagValueData = _databaseContext.TagValue.ToList();
-                return Ok( new{result=tagValueData, message="sucess"});
-            }
-            catch (Exception ex)
-            {
-                return NotFound( new{result=ex, message="fail"});
-            }
-        }
+        // [HttpGet("getdata")]
+        // public IActionResult GetData()
+        // {
+        //     try
+        //     {
+        //         var tagValueData = _databaseContext.TagValue.ToList();
+        //         return Ok( new{result=tagValueData, message="sucess"});
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return NotFound( new{result=ex, message="fail"});
+        //     }
+        // }
         
         // [HttpGet]
         // public IEnumerable<WeatherForecast> Get()
@@ -80,49 +81,49 @@ namespace Backend.Controllers
 
         // Update
         // https://localhost:5001/api/updatedata
-        [HttpPut("updatedata")]
-        public async Task<IActionResult> UpdateData(TagValue result)
-        {
-            try
-            {
-                var results = await _databaseContext.TagValue.SingleOrDefaultAsync(o => o.Id == result.Id);
-                if(result != null)
-                {
-                    // update value
-                    results.Value = result.Value;
-                    results.Tagname = result.Tagname;
+        // [HttpPut("updatedata")]
+        // public async Task<IActionResult> UpdateData(TagValue result)
+        // {
+        //     try
+        //     {
+        //         var results = await _databaseContext.TagValue.SingleOrDefaultAsync(o => o.Id == result.Id);
+        //         if(result != null)
+        //         {
+        //             // update value
+        //             results.Value = result.Value;
+        //             results.Tagname = result.Tagname;
 
-                    _databaseContext.Update(results);
-                    await _databaseContext.SaveChangesAsync();
-                }
-                return Ok( new{result=result, message="sucess"});
-            }
-            catch (Exception ex)
-            {
-                return NotFound( new{result=ex, message="fail"});
-            }
-        }
+        //             _databaseContext.Update(results);
+        //             await _databaseContext.SaveChangesAsync();
+        //         }
+        //         return Ok( new{result=result, message="sucess"});
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return NotFound( new{result=ex, message="fail"});
+        //     }
+        // }
 
         // Delete
         // https://localhost:5001/api/deletedata
-        [HttpDelete("deletedata/{tagname}")]
-        public IActionResult DeleteData(string tagname)
-        {
-            try
-            {
-                var result = _databaseContext.TagValue.SingleOrDefault(o => o.Tagname == tagname);
-                if(result != null)
-                {
-                    _databaseContext.Remove(result);
-                    _databaseContext.SaveChanges();
-                }
-                return Ok( new{result=result, message="sucess"});
-            }
-            catch (Exception ex)
-            {
-                return NotFound( new{result=ex, message="fail"});
-            }
-        }
+        // [HttpDelete("deletedata/{tagname}")]
+        // public IActionResult DeleteData(string tagname)
+        // {
+        //     try
+        //     {
+        //         var result = _databaseContext.TagValue.SingleOrDefault(o => o.Tagname == tagname);
+        //         if(result != null)
+        //         {
+        //             _databaseContext.Remove(result);
+        //             _databaseContext.SaveChanges();
+        //         }
+        //         return Ok( new{result=result, message="sucess"});
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return NotFound( new{result=ex, message="fail"});
+        //     }
+        // }
 
         [HttpGet("getTT01Value")]
         public async Task<IActionResult> getTT01Value()
@@ -2122,6 +2123,400 @@ namespace Backend.Controllers
             }
         }
 
+        [HttpGet("getSOData/Din/{SelDate}")]
+        public IActionResult getSODataDateIn(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE Date_In={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getSOData/Dout/{SelDate}")]
+        public IActionResult getSODataDateOut(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE Date_Out={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getSOData/Po/{POno}")]
+        public IActionResult getSODataPO(string POno)
+        {
+            try
+            {
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE PO_no={0}",POno).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getSOData/Tid/{id}")]
+        public IActionResult getSODataTruckID(string id)
+        {
+            try
+            {
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getIWBData/Din/{SelDate}")]
+        public IActionResult getIWBDataDateIn(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWBData WHERE Date_In={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getIWBData/Dout/{SelDate}")]
+        public IActionResult getIWBDataDateOut(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWBData WHERE Date_Out={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getIWBData/Po/{POno}")]
+        public IActionResult getIWBDataPO(string POno)
+        {
+            try
+            {
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWBData WHERE PO_no={0}",POno).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getIWBData/Tid/{id}")]
+        public IActionResult getIWBDataTruckID(string id)
+        {
+            try
+            {
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWbdata WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getBayData/Din/{SelDate}")]
+        public IActionResult getBayDataDateIn(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_In={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getBayData/Dout/{SelDate}")]
+        public IActionResult getBayDataDateOut(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_Out={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getBayData/Po/{POno}")]
+        public IActionResult getBayDataDatePO(string POno)
+        {
+            try
+            {
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE PO_no={0}",POno).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getBayData/Tid/{id}")]
+        public IActionResult getBayDataTruckID(string id)
+        {
+            try
+            {
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getOWBData/Din/{SelDate}")]
+        public IActionResult getOWBDataDateIn(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWbdata WHERE Date_In={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getOWBData/Dout/{SelDate}")]
+        public IActionResult getOWBDataDateOut(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWbdata WHERE Date_Out={0}",SelDate).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getOWBData/Po/{POno}")]
+        public IActionResult getOWBDataPO(string POno)
+        {
+            try
+            {
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWBData WHERE PO_no={0}",POno).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getOWBData/Tid/{id}")]
+        public IActionResult getOWBDataTruckID(string id)
+        {
+            try
+            {
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWbdata WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _SaleOfficeData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo,
+                    DateOut = c.DateOut,
+                    TimeOut = c.TimeOut
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getEGData/Din/{SelDate}")]
+        public IActionResult getEGDataDateIn(string SelDate)
+        {
+            try
+            {
+                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM ExitGateData WHERE Date_In={0}",SelDate).Select(c => new _ExitGateData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getEGData/Po/{POno}")]
+        public IActionResult getEGDataPO(string POno)
+        {
+            try
+            {
+                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM ExitGateData WHERE PO_no={0}",POno).Select(c => new _ExitGateData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getEGData/Tid/{id}")]
+        public IActionResult getEGDataTruckID(string id)
+        {
+            try
+            {
+                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM ExitGateData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _ExitGateData{
+                    ServiceId = c.ServiceId,
+                    DateIn =  c.DateIn,
+                    TimeIn = c.TimeIn,
+                    PoNo = c.PoNo
+                }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        
 
 
 

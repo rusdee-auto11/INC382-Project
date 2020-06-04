@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj": {}
+    "/Users/rusdee/Desktop/WebAPI/INC382-Project/Backend/Backend.csproj": {}
   },
   "projects": {
-    "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj": {
+    "/Users/rusdee/Desktop/WebAPI/INC382-Project/Backend/Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj",
+        "projectUniqueName": "/Users/rusdee/Desktop/WebAPI/INC382-Project/Backend/Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "/Users/rusdee/Desktop/WebProgramming/Backend/Backend.csproj",
+        "projectPath": "/Users/rusdee/Desktop/WebAPI/INC382-Project/Backend/Backend.csproj",
         "packagesPath": "/Users/rusdee/.nuget/packages/",
-        "outputPath": "/Users/rusdee/Desktop/WebProgramming/Backend/obj/",
+        "outputPath": "/Users/rusdee/Desktop/WebAPI/INC382-Project/Backend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rusdee/.nuget/NuGet/NuGet.Config"
@@ -36,6 +36,10 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Mapster": {
+              "target": "Package",
+              "version": "[5.3.2, )"
+            },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.3, )"
