@@ -7,11 +7,11 @@ namespace Backend.Models
     {
         public Popaper()
         {
-            BayData = new HashSet<BayData>();
-            ExitGateData = new HashSet<ExitGateData>();
-            InboundWbdata = new HashSet<InboundWbdata>();
-            OutboundWbdata = new HashSet<OutboundWbdata>();
-            SaleOfficeData = new HashSet<SaleOfficeData>();
+            BayData1 = new HashSet<BayData1>();
+            ExitGateData1 = new HashSet<ExitGateData1>();
+            InboundWbdata1 = new HashSet<InboundWbdata1>();
+            OutboundWbdata1 = new HashSet<OutboundWbdata1>();
+            SaleOfficeData1 = new HashSet<SaleOfficeData1>();
         }
 
         public string PoNo { get; set; }
@@ -27,10 +27,10 @@ namespace Backend.Models
 
         public virtual Gas ItemNavigation { get; set; }
         public virtual CostPriceGas UnitPrice { get; set; }
-        public virtual ICollection<BayData> BayData { get; set; }
-        public virtual ICollection<ExitGateData> ExitGateData { get; set; }
-        public virtual ICollection<InboundWbdata> InboundWbdata { get; set; }
-        public virtual ICollection<OutboundWbdata> OutboundWbdata { get; set; }
-        public virtual ICollection<SaleOfficeData> SaleOfficeData { get; set; }
+        public virtual ICollection<BayData1> BayData1 { get; set; }
+        public virtual ICollection<ExitGateData1> ExitGateData1 { get; set; }
+        public virtual ICollection<InboundWbdata1> InboundWbdata1 { get; set; }
+        public virtual ICollection<OutboundWbdata1> OutboundWbdata1 { get; set; }
+        public virtual ICollection<SaleOfficeData1> SaleOfficeData1 { get; set; }
     }
 }

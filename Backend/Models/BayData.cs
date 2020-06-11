@@ -11,9 +11,8 @@ namespace Backend.Models
         public string PoNo { get; set; }
         public DateTime DateOut { get; set; }
         public TimeSpan TimeOut { get; set; }
-        public string GasId { get; set; }
-
-        public virtual Gas Gas { get; set; }
-        public virtual Popaper PoNoNavigation { get; set; }
+        public double ServiceTime { get; set; }
+        public string Bay { get; set; }
+        public string TruckId { get; set; }
     }
 }

@@ -7,14 +7,14 @@ namespace Backend.Models
     {
         public Gas()
         {
-            BayData = new HashSet<BayData>();
+            BayData1 = new HashSet<BayData1>();
             Popaper = new HashSet<Popaper>();
         }
 
         public string GasId { get; set; }
         public string GasType { get; set; }
 
-        public virtual ICollection<BayData> BayData { get; set; }
+        public virtual ICollection<BayData1> BayData1 { get; set; }
         public virtual ICollection<Popaper> Popaper { get; set; }
     }
 }

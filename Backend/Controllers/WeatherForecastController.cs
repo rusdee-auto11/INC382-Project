@@ -2128,14 +2128,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE Date_In={0}",SelDate).Select(c => new _SaleOfficeData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM _SaleOfficeData WHERE Date_In={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2149,14 +2142,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE Date_Out={0}",SelDate).Select(c => new _SaleOfficeData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM _SaleOfficeData WHERE Date_Out={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2170,14 +2156,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM SaleOfficeData WHERE PO_no={0}",POno).Select(c => new _SaleOfficeData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT* FROM _SaleOfficeData WHERE PO_no={0}",POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2191,16 +2170,8 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT s.Service_ID,s.Date_In, s.Time_In, s.PO_no,  s.Time_Out,s.Date_Out, p.Truck_ID FROM SaleOfficeData s, POPaper p WHERE s.PO_no=p.PO_no AND p.Truck_ID={0}",id).Select(c => new _SaleOfficeData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT* FROM _SaleOfficeData WHERE Truck_ID={0}",id).ToList();
                 return Ok( new{result=_result, message="sucess"});
-                
             }
             catch (Exception ex)
             {
@@ -2213,14 +2184,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWBData WHERE Date_In={0}",SelDate).Select(c => new _SaleOfficeData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Date_In={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2234,14 +2198,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWBData WHERE Date_Out={0}",SelDate).Select(c => new _InboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Date_Out={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2255,14 +2212,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWBData WHERE PO_no={0}",POno).Select(c => new _InboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE PO_no={0}",POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2276,14 +2226,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM InboundWbdata WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _InboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Truck_ID={0}",id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2297,14 +2240,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_In={0}",SelDate).Select(c => new _BayData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_In={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2318,14 +2254,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_Out={0}",SelDate).Select(c => new _BayData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_Out={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2339,14 +2268,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE PO_no={0}",POno).Select(c => new _BayData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM _BayData WHERE PO_no={0}",POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2360,14 +2282,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _BayData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM _BayData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2381,14 +2296,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWbdata WHERE Date_In={0}",SelDate).Select(c => new _OutboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Date_In={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2402,14 +2310,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWbdata WHERE Date_Out={0}",SelDate).Select(c => new _OutboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Date_Out={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2423,14 +2324,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWBData WHERE PO_no={0}",POno).Select(c => new _OutboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWBData WHERE PO_no={0}",POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2444,14 +2338,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM OutboundWbdata WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _OutboundWbdata{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo,
-                    DateOut = c.DateOut,
-                    TimeOut = c.TimeOut
-                }).ToList();
+                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Truck_ID={0}",id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2465,12 +2352,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM ExitGateData WHERE Date_In={0}",SelDate).Select(c => new _ExitGateData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo
-                }).ToList();
+                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE Date_In={0}",SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2484,12 +2366,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM ExitGateData WHERE PO_no={0}",POno).Select(c => new _ExitGateData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo
-                }).ToList();
+                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE PO_no={0}",POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2503,12 +2380,7 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM ExitGateData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).Select(c => new _ExitGateData{
-                    ServiceId = c.ServiceId,
-                    DateIn =  c.DateIn,
-                    TimeIn = c.TimeIn,
-                    PoNo = c.PoNo
-                }).ToList();
+                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE Truck_ID={0}",id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2517,30 +2389,30 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet("getPOData")]
-        public IActionResult getPOData()
-        {
-            try
-            {
-                var _result = _databaseContext.Popaper.FromSqlRaw("SELECT * FROM POPaper").Select(c => new _Popaper{
-                    PoNo = c.PoNo,
-                    PaymentNo = c.PaymentNo,
-                    Date = c.Date,
-                    Time = c.Time,
-                    CustomerId = c.CustomerId,
-                    Item = c.Item,
-                    UnitPriceId = c.UnitPriceId,
-                    Quantity = c.Quantity,
-                    Amount = c.Amount,
-                    TruckId = c.TruckId
-                }).ToList();
-                return Ok( new{result=_result, message="sucess"});
-            }
-            catch (Exception ex)
-            {
-                return NotFound( new{result=ex, message="fail"});
-            }
-        }
+        // [HttpGet("getPOData")]
+        // public IActionResult getPOData()
+        // {
+        //     try
+        //     {
+        //         var _result = _databaseContext.Popaper.FromSqlRaw("SELECT * FROM POPaper").Select(c => new _Popaper{
+        //             PoNo = c.PoNo,
+        //             PaymentNo = c.PaymentNo,
+        //             Date = c.Date,
+        //             Time = c.Time,
+        //             CustomerId = c.CustomerId,
+        //             Item = c.Item,
+        //             UnitPriceId = c.UnitPriceId,
+        //             Quantity = c.Quantity,
+        //             Amount = c.Amount,
+        //             TruckId = c.TruckId
+        //         }).ToList();
+        //         return Ok( new{result=_result, message="sucess"});
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         return NotFound( new{result=ex, message="fail"});
+        //     }
+        // }
 
 
 

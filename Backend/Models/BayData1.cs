@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Backend.Models
 {
-    public partial class OutboundWbdata
+    public partial class BayData1
     {
         public string ServiceId { get; set; }
         public DateTime DateIn { get; set; }
@@ -11,7 +11,9 @@ namespace Backend.Models
         public string PoNo { get; set; }
         public DateTime DateOut { get; set; }
         public TimeSpan TimeOut { get; set; }
-        public double ServiceTime { get; set; }
-        public string TruckId { get; set; }
+        public string GasId { get; set; }
+
+        public virtual Gas Gas { get; set; }
+        public virtual Popaper PoNoNavigation { get; set; }
     }
 }
