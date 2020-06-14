@@ -17,27 +17,30 @@ namespace Backend.Data
         }
 
         public virtual DbSet<BayData> BayData { get; set; }
-        public virtual DbSet<BayData1> BayData1 { get; set; }
         public virtual DbSet<CostPriceGas> CostPriceGas { get; set; }
+        public virtual DbSet<CustomerInfo> CustomerInfo { get; set; }
         public virtual DbSet<ExitGateData> ExitGateData { get; set; }
-        public virtual DbSet<ExitGateData1> ExitGateData1 { get; set; }
         public virtual DbSet<Gas> Gas { get; set; }
         public virtual DbSet<InboundWbdata> InboundWbdata { get; set; }
-        public virtual DbSet<InboundWbdata1> InboundWbdata1 { get; set; }
         public virtual DbSet<OutboundWbdata> OutboundWbdata { get; set; }
-        public virtual DbSet<OutboundWbdata1> OutboundWbdata1 { get; set; }
         public virtual DbSet<Popaper> Popaper { get; set; }
         public virtual DbSet<SaleOfficeData> SaleOfficeData { get; set; }
-        public virtual DbSet<SaleOfficeData1> SaleOfficeData1 { get; set; }
-        
+        public virtual DbSet<Truck> Truck { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=localhost,1433; Database=TAS_System;User=sa;Password=Sql12345");
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BayData>(entity =>
             {
                 entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("_BayData");
 
                 entity.Property(e => e.ServiceId)
                     .HasColumnName("Service_ID")
@@ -66,58 +69,6 @@ namespace Backend.Data
                 entity.Property(e => e.TimeIn).HasColumnName("Time_In");
 
                 entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.Property(e => e.TruckId)
-                    .IsRequired()
-                    .HasColumnName("Truck_ID")
-                    .HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<BayData1>(entity =>
-            {
-                entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("BayData");
-
-                entity.Property(e => e.ServiceId)
-                    .HasColumnName("Service_ID")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.DateIn)
-                    .HasColumnName("Date_In")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.DateOut)
-                    .HasColumnName("Date_Out")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.GasId)
-                    .IsRequired()
-                    .HasColumnName("Gas_ID")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PoNo)
-                    .IsRequired()
-                    .HasColumnName("PO_no")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.TimeIn).HasColumnName("Time_In");
-
-                entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.HasOne(d => d.Gas)
-                    .WithMany(p => p.BayData1)
-                    .HasForeignKey(d => d.GasId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BayData__Gas_ID__693CA210");
-
-                entity.HasOne(d => d.PoNoNavigation)
-                    .WithMany(p => p.BayData1)
-                    .HasForeignKey(d => d.PoNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__BayData__PO_no__66603565");
             });
 
             modelBuilder.Entity<CostPriceGas>(entity =>
@@ -137,12 +88,40 @@ namespace Backend.Data
                     .IsUnicode(false);
             });
 
+            modelBuilder.Entity<CustomerInfo>(entity =>
+            {
+                entity.HasKey(e => e.CustomerId);
+
+                entity.Property(e => e.CustomerId)
+                    .HasColumnName("Customer_ID")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Address)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.PhoneNo)
+                    .IsRequired()
+                    .HasColumnName("Phone_no")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.TaxPayerId)
+                    .IsRequired()
+                    .HasColumnName("Tax_payer_ID")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<ExitGateData>(entity =>
             {
                 entity.HasKey(e => e.ServiceId);
 
-                entity.ToTable("_ExitGateData");
-
                 entity.Property(e => e.ServiceId)
                     .HasColumnName("Service_ID")
                     .HasMaxLength(50);
@@ -158,40 +137,6 @@ namespace Backend.Data
                     .IsUnicode(false);
 
                 entity.Property(e => e.TimeIn).HasColumnName("Time_In");
-
-                entity.Property(e => e.TruckId)
-                    .IsRequired()
-                    .HasColumnName("Truck_ID")
-                    .HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<ExitGateData1>(entity =>
-            {
-                entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("ExitGateData");
-
-                entity.Property(e => e.ServiceId)
-                    .HasColumnName("Service_ID")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.DateIn)
-                    .HasColumnName("Date_In")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.PoNo)
-                    .IsRequired()
-                    .HasColumnName("PO_no")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.TimeIn).HasColumnName("Time_In");
-
-                entity.HasOne(d => d.PoNoNavigation)
-                    .WithMany(p => p.ExitGateData1)
-                    .HasForeignKey(d => d.PoNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__ExitGateD__PO_no__68487DD7");
             });
 
             modelBuilder.Entity<Gas>(entity =>
@@ -203,48 +148,10 @@ namespace Backend.Data
 
                 entity.Property(e => e.GasType)
                     .HasColumnName("Gas_Type")
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .IsFixedLength();
+                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<InboundWbdata>(entity =>
-            {
-                entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("_InboundWBData");
-
-                entity.Property(e => e.ServiceId)
-                    .HasColumnName("Service_ID")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.DateIn)
-                    .HasColumnName("Date_In")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.DateOut)
-                    .HasColumnName("Date_Out")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.PoNo)
-                    .IsRequired()
-                    .HasColumnName("PO_no")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.ServiceTime).HasColumnName("Service_Time");
-
-                entity.Property(e => e.TimeIn).HasColumnName("Time_In");
-
-                entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.Property(e => e.TruckId)
-                    .IsRequired()
-                    .HasColumnName("Truck_ID")
-                    .HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<InboundWbdata1>(entity =>
             {
                 entity.HasKey(e => e.ServiceId);
 
@@ -268,54 +175,14 @@ namespace Backend.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.TimeIn).HasColumnName("Time_In");
-
-                entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.HasOne(d => d.PoNoNavigation)
-                    .WithMany(p => p.InboundWbdata1)
-                    .HasForeignKey(d => d.PoNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__InboundWB__PO_no__656C112C");
-            });
-
-            modelBuilder.Entity<OutboundWbdata>(entity =>
-            {
-                entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("_OutboundWBData");
-
-                entity.Property(e => e.ServiceId)
-                    .HasColumnName("Service_ID")
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.DateIn)
-                    .HasColumnName("Date_In")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.DateOut)
-                    .HasColumnName("Date_Out")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.PoNo)
-                    .IsRequired()
-                    .HasColumnName("PO_no")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.ServiceTime).HasColumnName("Service_Time");
 
                 entity.Property(e => e.TimeIn).HasColumnName("Time_In");
 
                 entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.Property(e => e.TruckId)
-                    .IsRequired()
-                    .HasColumnName("Truck_ID")
-                    .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<OutboundWbdata1>(entity =>
+            modelBuilder.Entity<OutboundWbdata>(entity =>
             {
                 entity.HasKey(e => e.ServiceId);
 
@@ -339,15 +206,11 @@ namespace Backend.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ServiceTime).HasColumnName("Service_Time");
+
                 entity.Property(e => e.TimeIn).HasColumnName("Time_In");
 
                 entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.HasOne(d => d.PoNoNavigation)
-                    .WithMany(p => p.OutboundWbdata1)
-                    .HasForeignKey(d => d.PoNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OutboundW__PO_no__6754599E");
             });
 
             modelBuilder.Entity<Popaper>(entity =>
@@ -361,14 +224,23 @@ namespace Backend.Data
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.CustomerId).HasColumnName("Customer_ID");
+                entity.Property(e => e.CustomerId)
+                    .IsRequired()
+                    .HasColumnName("Customer_ID")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.Date).HasColumnType("date");
 
-                entity.Property(e => e.Item)
+                entity.Property(e => e.InvoiceNo)
                     .IsRequired()
+                    .HasColumnName("Invoice_no")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.Item)
+                    .IsRequired()
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.PaymentNo)
                     .IsRequired()
@@ -384,24 +256,11 @@ namespace Backend.Data
                 entity.Property(e => e.UnitPriceId)
                     .HasColumnName("Unit_Price_ID")
                     .HasMaxLength(50);
-
-                entity.HasOne(d => d.ItemNavigation)
-                    .WithMany(p => p.Popaper)
-                    .HasForeignKey(d => d.Item)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__POPaper__Item__6C190EBB");
-
-                entity.HasOne(d => d.UnitPrice)
-                    .WithMany(p => p.Popaper)
-                    .HasForeignKey(d => d.UnitPriceId)
-                    .HasConstraintName("FK__POPaper__Unit_Pr__6D0D32F4");
             });
 
             modelBuilder.Entity<SaleOfficeData>(entity =>
             {
                 entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("_SaleOfficeData");
 
                 entity.Property(e => e.ServiceId)
                     .HasColumnName("Service_ID")
@@ -426,46 +285,18 @@ namespace Backend.Data
                 entity.Property(e => e.TimeIn).HasColumnName("Time_In");
 
                 entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.Property(e => e.TruckId)
-                    .IsRequired()
-                    .HasColumnName("Truck_ID")
-                    .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<SaleOfficeData1>(entity =>
+            modelBuilder.Entity<Truck>(entity =>
             {
-                entity.HasKey(e => e.ServiceId);
-
-                entity.ToTable("SaleOfficeData");
-
-                entity.Property(e => e.ServiceId)
-                    .HasColumnName("Service_ID")
+                entity.Property(e => e.TruckId)
+                    .HasColumnName("Truck_ID")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.DateIn)
-                    .HasColumnName("Date_In")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.DateOut)
-                    .HasColumnName("Date_Out")
-                    .HasColumnType("date");
-
-                entity.Property(e => e.PoNo)
+                entity.Property(e => e.TrucksDriverName)
                     .IsRequired()
-                    .HasColumnName("PO_no")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.TimeIn).HasColumnName("Time_In");
-
-                entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
-
-                entity.HasOne(d => d.PoNoNavigation)
-                    .WithMany(p => p.SaleOfficeData1)
-                    .HasForeignKey(d => d.PoNo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__SaleOffic__PO_no__6477ECF3");
+                    .HasColumnName("TrucksDriver_Name")
+                    .HasMaxLength(50);
             });
 
             OnModelCreatingPartial(modelBuilder);

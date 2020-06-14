@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Backend.Data;
@@ -11,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Linq;
 using System.Net;
 using Mapster;
+using System.Linq;
 
 namespace Backend.Controllers
 {
@@ -158,7 +158,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -180,9 +180,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 //DateTime seletedDate = new DateTime();
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string DDFVurl = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQmlrltdQkjUKd9XFOXW_NVgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIEFNT1VOVCBGSUxMSU5HIFZPTFVNRSAoRElFU0VMKQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string DDFVurl = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQmlrltdQkjUKd9XFOXW_NVgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIEFNT1VOVCBGSUxMSU5HIFZPTFVNRSAoRElFU0VMKQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(DDFVurl);
 
@@ -202,7 +204,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -222,9 +224,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQeEkyS9gKbkm7tuK-b_9ZmgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIEFNT1VOVCBGSUxMSU5HIFZPTFVNRSAoR0FTR0hPTDk1KQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQeEkyS9gKbkm7tuK-b_9ZmgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIEFNT1VOVCBGSUxMSU5HIFZPTFVNRSAoR0FTR0hPTDk1KQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -244,7 +248,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -264,9 +268,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQDxYI2MtknUekXOTzxhWuSAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIENZQ0xFIFRJTUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQDxYI2MtknUekXOTzxhWuSAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIENZQ0xFIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -286,7 +292,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -306,9 +312,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQqoYYOAfpfEiVOWL4oRoFxAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIENZQ0xFIFRJTUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQqoYYOAfpfEiVOWL4oRoFxAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIENZQ0xFIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -328,7 +336,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -348,9 +356,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQtMZrpKeMDke_MQ-2GaHVHgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQtMZrpKeMDke_MQ-2GaHVHgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -370,7 +380,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -390,9 +400,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvWLBAFJ2TUWlf-WK9vpFHwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvWLBAFJ2TUWlf-WK9vpFHwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -412,7 +424,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -432,9 +444,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQEgikTfxvRESnesr4fjxtxwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQEgikTfxvRESnesr4fjxtxwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -454,7 +468,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -474,9 +488,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQEUq7d1pTYkeLV6ga4uj7VQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQEUq7d1pTYkeLV6ga4uj7VQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -496,7 +512,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -516,9 +532,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQqbtERL5W3U-gwc7iicbzjwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQqbtERL5W3U-gwc7iicbzjwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -538,7 +556,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -558,9 +576,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQL_OscsyLX0eWtxZ14Ua6xwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIE5VTUJFUiBPRiBUUlVDS1MgSU4/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQL_OscsyLX0eWtxZ14Ua6xwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIE5VTUJFUiBPRiBUUlVDS1MgSU4/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -580,7 +600,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -600,9 +620,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw0f0eqzt_6hG4hVTudaRgyQakbfH4mtk0K7bfkI2WqtEgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEVYSVQgR0FURXxEQUlMWSBOVU1CRVIgT0YgVFJVQ0tTIE9VVA/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw0f0eqzt_6hG4hVTudaRgyQakbfH4mtk0K7bfkI2WqtEgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEVYSVQgR0FURXxEQUlMWSBOVU1CRVIgT0YgVFJVQ0tTIE9VVA/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -622,7 +644,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -642,9 +664,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQX_mCw5ZM70q7toyh3At2mwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQX_mCw5ZM70q7toyh3At2mwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -664,7 +688,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -684,9 +708,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvBfMURpMYkaVbKFKIpaIuQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBOVU1CRVIgT0YgUVVFVUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvBfMURpMYkaVbKFKIpaIuQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBOVU1CRVIgT0YgUVVFVUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -706,7 +732,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -726,9 +752,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQyyGzd5Z_B0Sf7C0YpVl5sAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQyyGzd5Z_B0Sf7C0YpVl5sAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{starttime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -748,7 +776,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -768,9 +796,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQ_-itW4CBpECG0I1jd--QLAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQ_-itW4CBpECG0I1jd--QLAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -790,7 +820,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
             } 
             catch (Exception ex)
             {
@@ -810,9 +840,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQDQepp_AFMU6McMb3i-j7dgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQDQepp_AFMU6McMb3i-j7dgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -832,7 +864,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -852,9 +884,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ3g2In2D_20mTm96BjY_jwwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdJUA/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ3g2In2D_20mTm96BjY_jwwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdJUA/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -874,7 +908,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -894,9 +928,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQSBstWfe-f0qNBPRMLUJ0wQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdJUA/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQSBstWfe-f0qNBPRMLUJ0wQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdJUA/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -916,7 +952,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -936,9 +972,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQgwkApjFuLEm5dHSOTpMV4gMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQgwkApjFuLEm5dHSOTpMV4gMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -958,7 +996,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -978,9 +1016,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQuGl69bRgKkGm2_WTBtwKkgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBTQ0hfVVRJTElaQVRJT04/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQuGl69bRgKkGm2_WTBtwKkgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBTQ0hfVVRJTElaQVRJT04/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1000,7 +1040,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1020,9 +1060,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQHT_vByThs0uqV9drwYFHNwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQHT_vByThs0uqV9drwYFHNwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1042,7 +1084,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1062,9 +1104,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQwVFMF7crK0-2lxA8HObuFAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQwVFMF7crK0-2lxA8HObuFAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1084,7 +1128,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1104,9 +1148,11 @@ namespace Backend.Controllers
 
                 DateTime today = DateTime.Today;
                 TimeSpan value =  today.Subtract(selDate);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQNGiQoZDhcES7qpjbxLW-fQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQNGiQoZDhcES7qpjbxLW-fQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1126,7 +1172,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1147,9 +1193,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQSq6-ynwuZ027YrESOARmHgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfE1PTlRITFkgQU1PVU5UIEZJTExJTkcgVk9MVU1FIChESUVTRUwp/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQSq6-ynwuZ027YrESOARmHgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfE1PTlRITFkgQU1PVU5UIEZJTExJTkcgVk9MVU1FIChESUVTRUwp/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1169,7 +1217,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1190,9 +1238,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQp_Ugjr0CHUO8q8GrKmCpWgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfE1PTlRITFkgQU1PVU5UIEZJTExJTkcgVk9MVU1FIChHQVNHSE9MOTUp/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQp_Ugjr0CHUO8q8GrKmCpWgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfE1PTlRITFkgQU1PVU5UIEZJTExJTkcgVk9MVU1FIChHQVNHSE9MOTUp/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1212,7 +1262,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1233,9 +1283,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ78fculoS7EenUeUoxErJ6wMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgQ1lDTEUgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ78fculoS7EenUeUoxErJ6wMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgQ1lDTEUgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1255,7 +1307,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1276,9 +1328,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQi259JiczK0-PUMCwxPGVJgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgQ1lDTEUgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQi259JiczK0-PUMCwxPGVJgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgQ1lDTEUgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1298,7 +1352,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1319,9 +1373,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQb8aCx9Xoskm752qdOuaAywMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQb8aCx9Xoskm752qdOuaAywMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1341,7 +1397,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1362,9 +1418,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQq9Fn6jKFZEWE7n0mFLXfmgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQq9Fn6jKFZEWE7n0mFLXfmgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1384,7 +1442,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1405,9 +1463,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ1MvOamkwMkaxPr0VdzCL6AMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ1MvOamkwMkaxPr0VdzCL6AMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1427,7 +1487,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1448,9 +1508,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQh7g9kA2zpkyT3RBHoL7bTwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQh7g9kA2zpkyT3RBHoL7bTwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1470,7 +1532,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1491,9 +1553,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQtOhLixf8X0OM5y52k23ZHQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQtOhLixf8X0OM5y52k23ZHQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1513,7 +1577,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1534,9 +1598,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQcM7SdYlB306OjK2wizzSaQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfE1PTlRITFkgTlVNQkVSIE9GIFRSVUNLUyBJTg/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQcM7SdYlB306OjK2wizzSaQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfE1PTlRITFkgTlVNQkVSIE9GIFRSVUNLUyBJTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1556,7 +1622,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1577,9 +1643,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw0f0eqzt_6hG4hVTudaRgyQt7urOVHmr02o78fIOzV5pQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEVYSVQgR0FURXxNT05USExZIE5VTUJFUiBPRiBUUlVDS1MgT1VU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw0f0eqzt_6hG4hVTudaRgyQt7urOVHmr02o78fIOzV5pQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEVYSVQgR0FURXxNT05USExZIE5VTUJFUiBPRiBUUlVDS1MgT1VU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1599,7 +1667,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1620,9 +1688,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQT-o9C6HmqESzrDhU-sn4jAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBOVU1CRVIgT0YgUVVFVUU/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQT-o9C6HmqESzrDhU-sn4jAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBOVU1CRVIgT0YgUVVFVUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1642,7 +1712,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1663,9 +1733,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQ153hLBU4LUm7jKvEcnUyYwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQ153hLBU4LUm7jKvEcnUyYwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1685,7 +1757,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1706,9 +1778,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ8Ad9yfsPVECdTrMR_fh2igMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ8Ad9yfsPVECdTrMR_fh2igMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1728,7 +1802,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1749,9 +1823,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQPmQL7nKeDket1wvLG4iZfQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQPmQL7nKeDket1wvLG4iZfQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1771,7 +1847,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1792,9 +1868,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQSAoahRteUE-GUXyrjQQm-AMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQSAoahRteUE-GUXyrjQQm-AMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1814,7 +1892,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1835,9 +1913,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQrN-naxcEfUyRsddgiG_2lQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgV0lQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQrN-naxcEfUyRsddgiG_2lQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgV0lQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1857,7 +1937,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1878,9 +1958,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQ01s0YgHk-0epu4FdGCqyHwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgV0lQ/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQ01s0YgHk-0epu4FdGCqyHwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgV0lQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1900,7 +1982,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1921,9 +2003,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQc0OiOk1YG0ee1ZP_tVrJIgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBTQ0hfVVRJTElaQVRJT04/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQc0OiOk1YG0ee1ZP_tVrJIgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIE1PTlRITFkgQVZFUkFHRSBTQ0hfVVRJTElaQVRJT04/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1943,7 +2027,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -1964,9 +2048,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQnS1cS_MHy0uxgjBrHggIdwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQnS1cS_MHy0uxgjBrHggIdwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgTU9OVEhMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -1986,7 +2072,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -2007,9 +2093,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQKRLFA-aRWUOhjvnrPmkdtAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQKRLFA-aRWUOhjvnrPmkdtAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBNT05USExZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -2029,7 +2117,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -2050,9 +2138,11 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQTJ0BtnvOVU-tkNUf7ZAvCgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQTJ0BtnvOVU-tkNUf7ZAvCgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBNT05USExZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -2072,7 +2162,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -2093,9 +2183,10 @@ namespace Backend.Controllers
                 DateTime today = DateTime.Today;
                 DateTime month = new DateTime(2018,3,31);
                 TimeSpan value =  today.Subtract(month);
-                int value2 = Convert.ToInt32(value.TotalDays);
+                string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = @"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQ_hnEZFqSBkWFjAhEszbEFgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-"+Convert.ToString(value2)+"d&endtime=T-"+Convert.ToString(value2-1)+"d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQ_hnEZFqSBkWFjAhEszbEFgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBNT05USExZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -2115,7 +2206,7 @@ namespace Backend.Controllers
                     }
                 }
 
-                return Ok(new {result=result, message="sucees"});
+                return Ok(new {result=result, message="success"});
            } 
             catch (Exception ex)
             {
@@ -2124,11 +2215,23 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getSOData/Din/{SelDate}")]
-        public IActionResult getSODataDateIn(string SelDate)
+        public IActionResult getSODataDateIn(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM _SaleOfficeData WHERE Date_In={0}",SelDate).ToList();
+                // var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM _SaleOfficeData WHERE Date_In={0}",SelDate).ToList();
+                var _result = (from s in _databaseContext.SaleOfficeData
+                               join p in _databaseContext.Popaper
+                               on s.PoNo equals p.PoNo
+                               select new {
+                                   s.DateIn,
+                                   s.DateOut,
+                                   s.TimeIn,
+                                   s.TimeOut,
+                                   s.PoNo,
+                                   s.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.DateIn == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2138,11 +2241,23 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getSOData/Dout/{SelDate}")]
-        public IActionResult getSODataDateOut(string SelDate)
+        public IActionResult getSODataDateOut(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM _SaleOfficeData WHERE Date_Out={0}",SelDate).ToList();
+                // var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT * FROM _SaleOfficeData WHERE Date_Out={0}",SelDate).ToList();
+                var _result = (from s in _databaseContext.SaleOfficeData
+                               join p in _databaseContext.Popaper
+                               on s.PoNo equals p.PoNo
+                               select new {
+                                   s.DateIn,
+                                   s.DateOut,
+                                   s.TimeIn,
+                                   s.TimeOut,
+                                   s.PoNo,
+                                   s.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.DateOut == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2156,7 +2271,20 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT* FROM _SaleOfficeData WHERE PO_no={0}",POno).ToList();
+                // var _result = _databaseContext.SaleOfficeData.FromSqlRaw($"SELECT* FROM _SaleOfficeData WHERE PO_no={POno}").ToList();
+                var _result = (from s in _databaseContext.SaleOfficeData
+                               join p in _databaseContext.Popaper
+                               on s.PoNo equals p.PoNo
+                               select new {
+                                   s.DateIn,
+                                   s.DateOut,
+                                   s.TimeIn,
+                                   s.TimeOut,
+                                   s.PoNo,
+                                   s.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.PoNo == POno).ToList();
+
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2170,7 +2298,19 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT* FROM _SaleOfficeData WHERE Truck_ID={0}",id).ToList();
+                // var _result = _databaseContext.SaleOfficeData.FromSqlRaw("SELECT* FROM _SaleOfficeData WHERE Truck_ID={0}",id).ToList();
+                var _result = (from s in _databaseContext.SaleOfficeData
+                               join p in _databaseContext.Popaper
+                               on s.PoNo equals p.PoNo
+                               select new {
+                                   s.DateIn,
+                                   s.DateOut,
+                                   s.TimeIn,
+                                   s.TimeOut,
+                                   s.PoNo,
+                                   s.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.TruckId == id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2180,11 +2320,23 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getIWBData/Din/{SelDate}")]
-        public IActionResult getIWBDataDateIn(string SelDate)
+        public IActionResult getIWBDataDateIn(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Date_In={0}",SelDate).ToList();
+                // var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Date_In={0}",SelDate).ToList();
+                var _result = (from i in _databaseContext.InboundWbdata
+                               join p in _databaseContext.Popaper
+                               on i.PoNo equals p.PoNo
+                               select new {
+                                   i.DateIn,
+                                   i.DateOut,
+                                   i.TimeIn,
+                                   i.TimeOut,
+                                   i.PoNo,
+                                   i.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.DateIn == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2194,11 +2346,23 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getIWBData/Dout/{SelDate}")]
-        public IActionResult getIWBDataDateOut(string SelDate)
+        public IActionResult getIWBDataDateOut(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Date_Out={0}",SelDate).ToList();
+                // var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Date_Out={0}",SelDate).ToList();
+                var _result = (from i in _databaseContext.InboundWbdata
+                               join p in _databaseContext.Popaper
+                               on i.PoNo equals p.PoNo
+                               select new {
+                                   i.DateIn,
+                                   i.DateOut,
+                                   i.TimeIn,
+                                   i.TimeOut,
+                                   i.PoNo,
+                                   i.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.DateOut == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2212,7 +2376,19 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE PO_no={0}",POno).ToList();
+                // var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE PO_no={0}",POno).ToList();
+                var _result = (from i in _databaseContext.InboundWbdata
+                               join p in _databaseContext.Popaper
+                               on i.PoNo equals p.PoNo
+                               select new {
+                                   i.DateIn,
+                                   i.DateOut,
+                                   i.TimeIn,
+                                   i.TimeOut,
+                                   i.PoNo,
+                                   i.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.PoNo == POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2226,7 +2402,19 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Truck_ID={0}",id).ToList();
+                // var _result = _databaseContext.InboundWbdata.FromSqlRaw("SELECT * FROM _InboundWBData WHERE Truck_ID={0}",id).ToList();
+                var _result = (from i in _databaseContext.InboundWbdata
+                               join p in _databaseContext.Popaper
+                               on i.PoNo equals p.PoNo
+                               select new {
+                                   i.DateIn,
+                                   i.DateOut,
+                                   i.TimeIn,
+                                   i.TimeOut,
+                                   i.PoNo,
+                                   i.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.TruckId == id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2236,11 +2424,25 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getBayData/Din/{SelDate}")]
-        public IActionResult getBayDataDateIn(string SelDate)
+        public IActionResult getBayDataDateIn(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_In={0}",SelDate).ToList();
+                // var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_In={0}",SelDate).ToList();
+                var _result = (from b in _databaseContext.BayData
+                               join p in _databaseContext.Popaper on b.PoNo equals p.PoNo
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               select new {
+                                   b.DateIn,
+                                   b.DateOut,
+                                   b.TimeIn,
+                                   b.TimeOut,
+                                   b.PoNo,
+                                   b.ServiceTime,
+                                   p.TruckId,
+                                   g.GasType,
+                                   p.Amount
+                               }).Where( o => o.DateIn == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2250,11 +2452,25 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getBayData/Dout/{SelDate}")]
-        public IActionResult getBayDataDateOut(string SelDate)
+        public IActionResult getBayDataDateOut(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_Out={0}",SelDate).ToList();
+                // var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM BayData WHERE Date_Out={0}",SelDate).ToList();
+                var _result = (from b in _databaseContext.BayData
+                               join p in _databaseContext.Popaper on b.PoNo equals p.PoNo
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               select new {
+                                   b.DateIn,
+                                   b.DateOut,
+                                   b.TimeIn,
+                                   b.TimeOut,
+                                   b.PoNo,
+                                   b.ServiceTime,
+                                   p.TruckId,
+                                   g.GasType,
+                                   p.Amount
+                               }).Where( o => o.DateOut == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2268,7 +2484,21 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM _BayData WHERE PO_no={0}",POno).ToList();
+                // var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM _BayData WHERE PO_no={0}",POno).ToList();
+                var _result = (from b in _databaseContext.BayData
+                               join p in _databaseContext.Popaper on b.PoNo equals p.PoNo
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               select new {
+                                   b.DateIn,
+                                   b.DateOut,
+                                   b.TimeIn,
+                                   b.TimeOut,
+                                   b.PoNo,
+                                   b.ServiceTime,
+                                   p.TruckId,
+                                   g.GasType,
+                                   p.Amount
+                               }).Where( o => o.PoNo == POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2282,7 +2512,21 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM _BayData WHERE PO_no IN (SELECT PO_no FROM POPaper WHERE Truck_ID={0})",id).ToList();
+                // var _result = _databaseContext.BayData.FromSqlRaw("SELECT * FROM _BayData WHERE Truck_ID={0}",id).ToList();
+                var _result = (from b in _databaseContext.BayData
+                               join p in _databaseContext.Popaper on b.PoNo equals p.PoNo
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               select new {
+                                   b.DateIn,
+                                   b.DateOut,
+                                   b.TimeIn,
+                                   b.TimeOut,
+                                   b.PoNo,
+                                   b.ServiceTime,
+                                   p.TruckId,
+                                   g.GasType,
+                                   p.Amount
+                               }).Where( o => o.TruckId == id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2292,11 +2536,23 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getOWBData/Din/{SelDate}")]
-        public IActionResult getOWBDataDateIn(string SelDate)
+        public IActionResult getOWBDataDateIn(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Date_In={0}",SelDate).ToList();
+                // var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Date_In={0}",SelDate).ToList();
+                var _result = (from o in _databaseContext.OutboundWbdata
+                               join p in _databaseContext.Popaper
+                               on o.PoNo equals p.PoNo
+                               select new {
+                                   o.DateIn,
+                                   o.DateOut,
+                                   o.TimeIn,
+                                   o.TimeOut,
+                                   o.PoNo,
+                                   o.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.DateIn == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2306,11 +2562,23 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getOWBData/Dout/{SelDate}")]
-        public IActionResult getOWBDataDateOut(string SelDate)
+        public IActionResult getOWBDataDateOut(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Date_Out={0}",SelDate).ToList();
+                // var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Date_Out={0}",SelDate).ToList();
+                var _result = (from o in _databaseContext.OutboundWbdata
+                               join p in _databaseContext.Popaper
+                               on o.PoNo equals p.PoNo
+                               select new {
+                                   o.DateIn,
+                                   o.DateOut,
+                                   o.TimeIn,
+                                   o.TimeOut,
+                                   o.PoNo,
+                                   o.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.DateOut == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2324,7 +2592,19 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWBData WHERE PO_no={0}",POno).ToList();
+                // var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWBData WHERE PO_no={0}",POno).ToList();
+                var _result = (from o in _databaseContext.OutboundWbdata
+                               join p in _databaseContext.Popaper
+                               on o.PoNo equals p.PoNo
+                               select new {
+                                   o.DateIn,
+                                   o.DateOut,
+                                   o.TimeIn,
+                                   o.TimeOut,
+                                   o.PoNo,
+                                   o.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.PoNo == POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2338,7 +2618,19 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Truck_ID={0}",id).ToList();
+                // var _result = _databaseContext.OutboundWbdata.FromSqlRaw("SELECT * FROM _OutboundWbdata WHERE Truck_ID={0}",id).ToList();
+                var _result = (from o in _databaseContext.OutboundWbdata
+                               join p in _databaseContext.Popaper
+                               on o.PoNo equals p.PoNo
+                               select new {
+                                   o.DateIn,
+                                   o.DateOut,
+                                   o.TimeIn,
+                                   o.TimeOut,
+                                   o.PoNo,
+                                   o.ServiceTime,
+                                   p.TruckId
+                               }).Where( o => o.TruckId == id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2348,11 +2640,20 @@ namespace Backend.Controllers
         }
 
         [HttpGet("getEGData/Din/{SelDate}")]
-        public IActionResult getEGDataDateIn(string SelDate)
+        public IActionResult getEGDataDateIn(DateTime SelDate)
         {
             try
             {
-                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE Date_In={0}",SelDate).ToList();
+                // var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE Date_In={0}",SelDate).ToList();
+                var _result = (from e in _databaseContext.ExitGateData
+                               join p in _databaseContext.Popaper
+                               on e.PoNo equals p.PoNo
+                               select new {
+                                   e.DateIn,
+                                   e.TimeIn,
+                                   e.PoNo,
+                                   p.TruckId
+                               }).Where( o => o.DateIn == SelDate).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2366,7 +2667,16 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE PO_no={0}",POno).ToList();
+                // var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE PO_no={0}",POno).ToList();
+                var _result = (from e in _databaseContext.ExitGateData
+                               join p in _databaseContext.Popaper
+                               on e.PoNo equals p.PoNo
+                               select new {
+                                   e.DateIn,
+                                   e.TimeIn,
+                                   e.PoNo,
+                                   p.TruckId
+                               }).Where( o => o.PoNo == POno).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2380,7 +2690,16 @@ namespace Backend.Controllers
         {
             try
             {
-                var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE Truck_ID={0}",id).ToList();
+                // var _result = _databaseContext.ExitGateData.FromSqlRaw("SELECT * FROM _ExitGateData WHERE Truck_ID={0}",id).ToList();
+                var _result = (from e in _databaseContext.ExitGateData
+                               join p in _databaseContext.Popaper
+                               on e.PoNo equals p.PoNo
+                               select new {
+                                   e.DateIn,
+                                   e.TimeIn,
+                                   e.PoNo,
+                                   p.TruckId
+                               }).Where( o => o.TruckId == id).ToList();
                 return Ok( new{result=_result, message="sucess"});
             }
             catch (Exception ex)
@@ -2414,7 +2733,127 @@ namespace Backend.Controllers
         //     }
         // }
 
+        [HttpGet("getReconShtData")]
+        public IActionResult getReconShtData()
+        {
+            try
+            {
+                // var _result = _databaseContext.Popaper.FromSqlRaw("SELECT * FROM _POPaper").ToList();
+                var _result = (from p in _databaseContext.Popaper
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               join c in _databaseContext.CustomerInfo on p.CustomerId equals c.CustomerId
+                               select new {
+                                   p.Date,
+                                   p.PoNo,
+                                   p.PaymentNo,
+                                   p.InvoiceNo,
+                                   p.TruckId,
+                                   g.GasType,
+                                   p.Quantity,
+                                   p.Amount,
+                                   c.Name
+                               }).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
 
+        [HttpGet("getPOData/{POon}")]
+        public IActionResult getPOData(String POon)
+        {
+            try
+            {
+                // var _result = _databaseContext.Popaper.FromSqlRaw("SELECT * FROM _POPaper WHERE Date={0}",SelDate).ToList();
+                var _result = (from p in _databaseContext.Popaper
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               join c in _databaseContext.CustomerInfo on p.CustomerId equals c.CustomerId
+                               join cp in _databaseContext.CostPriceGas on p.UnitPriceId equals cp.GasPriceId
+                               join t in _databaseContext.Truck on p.TruckId equals t.TruckId
+                               select new {
+                                   p.Date,
+                                   p.PoNo,
+                                   p.PaymentNo,
+                                   g.GasType,
+                                   cp.Price,
+                                   p.Quantity,
+                                   p.Amount,
+                                   p.CustomerId,
+                                   c.Name,
+                                   c.TaxPayerId,
+                                   t.TrucksDriverName
+                               }).Where( o => o.PoNo == POon).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("getInvoiceData/{IVno}")]
+        public IActionResult getInvoiceData(String IVno)
+        {
+            try
+            {
+                // var _result = _databaseContext.Popaper.FromSqlRaw("SELECT * FROM _POPaper WHERE Date={0}",SelDate).ToList();
+                var _result = (from p in _databaseContext.Popaper
+                               join g in _databaseContext.Gas on p.Item equals g.GasId
+                               join c in _databaseContext.CustomerInfo on p.CustomerId equals c.CustomerId
+                               join cp in _databaseContext.CostPriceGas on p.UnitPriceId equals cp.GasPriceId
+                               join b in _databaseContext.BayData on p.PoNo equals b.PoNo
+                               select new {
+                                   p.Date,
+                                   p.InvoiceNo,
+                                   p.PoNo,
+                                   p.PaymentNo,
+                                   b.ServiceTime,
+                                   g.GasType,
+                                   cp.Price,
+                                   p.Quantity,
+                                   p.Amount,
+                                   p.CustomerId,
+                                   c.Name,
+                                   c.Address,
+                                   c.TaxPayerId
+                               }).Where( o => o.InvoiceNo == IVno).ToList();
+                return Ok( new{result=_result, message="sucess"});
+            }
+            catch (Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        // [HttpGet("testgetPOData/{po}")]
+        // public IActionResult GetPOTest(string po)
+        // {
+        //     // step1 -> get data
+        //     Popaper1 value = _databaseContext.Popaper1.SingleOrDefault(o => o.PoNo == po);
+        //     IEnumerable<Popaper1> values = _databaseContext.Popaper1.ToList();
+        //     // step2 -> change value ->
+        //     Popaper result = new Popaper();
+        //     if(a<10)
+        //     {
+        //         result.Amount = 1000;
+        //     }
+        //     else
+        //     {
+        //         result.Amount = 2000;
+        //     }
+
+        //     // list ?
+        //     Popaper _value = value.Adapt<Popaper>();
+        //     IEnumerable<Popaper> _value1 = values.Adapt<IEnumerable<Popaper>>();
+
+        //     //step3 -> save PoNo
+        //     _databaseContext.Popaper.Add(result);
+        //     _databaseContext.SaveChanges(); // Check point
+
+        //     return Ok(new {result = result});
+        // }
 
 
 

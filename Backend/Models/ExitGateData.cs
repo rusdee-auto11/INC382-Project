@@ -9,6 +9,5 @@ namespace Backend.Models
         public DateTime DateIn { get; set; }
         public TimeSpan TimeIn { get; set; }
         public string PoNo { get; set; }
-        public string TruckId { get; set; }
     }
 }

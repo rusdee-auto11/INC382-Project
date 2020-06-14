@@ -13,6 +13,5 @@ namespace Backend.Models
         public TimeSpan TimeOut { get; set; }
         public double ServiceTime { get; set; }
         public string Bay { get; set; }
-        public string TruckId { get; set; }
     }
 }
