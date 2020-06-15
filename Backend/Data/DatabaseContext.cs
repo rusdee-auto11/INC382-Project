@@ -16,6 +16,7 @@ namespace Backend.Data
         {
         }
 
+        public virtual DbSet<Accounts> Accounts { get; set; }
         public virtual DbSet<BayData> BayData { get; set; }
         public virtual DbSet<CostPriceGas> CostPriceGas { get; set; }
         public virtual DbSet<CustomerInfo> CustomerInfo { get; set; }
@@ -25,6 +26,7 @@ namespace Backend.Data
         public virtual DbSet<OutboundWbdata> OutboundWbdata { get; set; }
         public virtual DbSet<Popaper> Popaper { get; set; }
         public virtual DbSet<SaleOfficeData> SaleOfficeData { get; set; }
+        public virtual DbSet<Transactions> Transactions { get; set; }
         public virtual DbSet<Truck> Truck { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -38,6 +40,26 @@ namespace Backend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Accounts>(entity =>
+            {
+                entity.HasKey(e => e.AccountId);
+
+                entity.Property(e => e.AccountId)
+                    .HasColumnName("Account_ID")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.AccountName)
+                    .IsRequired()
+                    .HasColumnName("Account_name")
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.AccountType)
+                    .IsRequired()
+                    .HasColumnName("Account_type")
+                    .HasMaxLength(50);
+            });
+
             modelBuilder.Entity<BayData>(entity =>
             {
                 entity.HasKey(e => e.ServiceId);
@@ -287,15 +309,40 @@ namespace Backend.Data
                 entity.Property(e => e.TimeOut).HasColumnName("Time_Out");
             });
 
+            modelBuilder.Entity<Transactions>(entity =>
+            {
+                entity.HasKey(e => e.TransactionId)
+                    .HasName("PK__Transact__9A8D56257D59B51A");
+
+                entity.Property(e => e.TransactionId).HasColumnName("Transaction_ID");
+
+                entity.Property(e => e.Date).HasColumnType("date");
+
+                entity.Property(e => e.Description).HasMaxLength(250);
+
+                entity.Property(e => e.PoNo)
+                    .HasColumnName("PO_no")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.RefNo)
+                    .HasColumnName("Ref_no")
+                    .HasMaxLength(10)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
+            });
+
             modelBuilder.Entity<Truck>(entity =>
             {
                 entity.Property(e => e.TruckId)
                     .HasColumnName("Truck_ID")
                     .HasMaxLength(50);
 
-                entity.Property(e => e.TrucksDriverName)
-                    .IsRequired()
-                    .HasColumnName("TrucksDriver_Name")
+                entity.Property(e => e.TruckDriverName)
+                    .HasColumnName("TruckDriver_Name")
                     .HasMaxLength(50);
             });
 

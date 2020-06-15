@@ -42,7 +42,7 @@ namespace Backend.Controllers
         //     {
         //         var results = _databaseContext.TagValue.Add(result);
         //         _databaseContext.SaveChanges();
-        //         return Ok( new{result=result, message="sucess"});
+        //         return Ok( new{result=result, message="success"});
         //     }
         //     catch (Exception ex)
         //     {
@@ -58,7 +58,7 @@ namespace Backend.Controllers
         //     try
         //     {
         //         var tagValueData = _databaseContext.TagValue.ToList();
-        //         return Ok( new{result=tagValueData, message="sucess"});
+        //         return Ok( new{result=tagValueData, message="success"});
         //     }
         //     catch (Exception ex)
         //     {
@@ -96,7 +96,7 @@ namespace Backend.Controllers
         //             _databaseContext.Update(results);
         //             await _databaseContext.SaveChangesAsync();
         //         }
-        //         return Ok( new{result=result, message="sucess"});
+        //         return Ok( new{result=result, message="success"});
         //     }
         //     catch (Exception ex)
         //     {
@@ -117,7 +117,7 @@ namespace Backend.Controllers
         //             _databaseContext.Remove(result);
         //             _databaseContext.SaveChanges();
         //         }
-        //         return Ok( new{result=result, message="sucess"});
+        //         return Ok( new{result=result, message="success"});
         //     }
         //     catch (Exception ex)
         //     {
@@ -756,7 +756,7 @@ namespace Backend.Controllers
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
                 string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
 
-                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQyyGzd5Z_B0Sf7C0YpVl5sAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{starttime}d";
+                string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQyyGzd5Z_B0Sf7C0YpVl5sAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
                 HttpResponseMessage response = await client.GetAsync(url);
 
@@ -2232,7 +2232,7 @@ namespace Backend.Controllers
                                    s.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.DateIn == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2258,7 +2258,7 @@ namespace Backend.Controllers
                                    s.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.DateOut == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2285,7 +2285,7 @@ namespace Backend.Controllers
                                    p.TruckId
                                }).Where( o => o.PoNo == POno).ToList();
 
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2311,7 +2311,7 @@ namespace Backend.Controllers
                                    s.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.TruckId == id).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2337,7 +2337,7 @@ namespace Backend.Controllers
                                    i.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.DateIn == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2363,7 +2363,7 @@ namespace Backend.Controllers
                                    i.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.DateOut == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2389,7 +2389,7 @@ namespace Backend.Controllers
                                    i.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.PoNo == POno).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2415,7 +2415,7 @@ namespace Backend.Controllers
                                    i.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.TruckId == id).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2443,7 +2443,7 @@ namespace Backend.Controllers
                                    g.GasType,
                                    p.Amount
                                }).Where( o => o.DateIn == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2471,7 +2471,7 @@ namespace Backend.Controllers
                                    g.GasType,
                                    p.Amount
                                }).Where( o => o.DateOut == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2499,7 +2499,7 @@ namespace Backend.Controllers
                                    g.GasType,
                                    p.Amount
                                }).Where( o => o.PoNo == POno).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2527,7 +2527,7 @@ namespace Backend.Controllers
                                    g.GasType,
                                    p.Amount
                                }).Where( o => o.TruckId == id).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2553,7 +2553,7 @@ namespace Backend.Controllers
                                    o.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.DateIn == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2579,7 +2579,7 @@ namespace Backend.Controllers
                                    o.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.DateOut == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2605,7 +2605,7 @@ namespace Backend.Controllers
                                    o.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.PoNo == POno).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2631,7 +2631,7 @@ namespace Backend.Controllers
                                    o.ServiceTime,
                                    p.TruckId
                                }).Where( o => o.TruckId == id).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2654,7 +2654,7 @@ namespace Backend.Controllers
                                    e.PoNo,
                                    p.TruckId
                                }).Where( o => o.DateIn == SelDate).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2677,7 +2677,7 @@ namespace Backend.Controllers
                                    e.PoNo,
                                    p.TruckId
                                }).Where( o => o.PoNo == POno).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2700,7 +2700,7 @@ namespace Backend.Controllers
                                    e.PoNo,
                                    p.TruckId
                                }).Where( o => o.TruckId == id).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2725,7 +2725,7 @@ namespace Backend.Controllers
         //             Amount = c.Amount,
         //             TruckId = c.TruckId
         //         }).ToList();
-        //         return Ok( new{result=_result, message="sucess"});
+        //         return Ok( new{result=_result, message="success"});
         //     }
         //     catch (Exception ex)
         //     {
@@ -2753,7 +2753,7 @@ namespace Backend.Controllers
                                    p.Amount,
                                    c.Name
                                }).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2761,8 +2761,8 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpGet("getPOData/{POon}")]
-        public IActionResult getPOData(String POon)
+        [HttpGet("getPOData/{POno}")]
+        public IActionResult getPOData(String POno)
         {
             try
             {
@@ -2783,9 +2783,11 @@ namespace Backend.Controllers
                                    p.CustomerId,
                                    c.Name,
                                    c.TaxPayerId,
-                                   t.TrucksDriverName
-                               }).Where( o => o.PoNo == POon).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                                   c.PhoneNo,
+                                   p.TruckId,
+                                   t.TruckDriverName
+                               }).Where( o => o.PoNo == POno).ToList();
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2819,7 +2821,7 @@ namespace Backend.Controllers
                                    c.Address,
                                    c.TaxPayerId
                                }).Where( o => o.InvoiceNo == IVno).ToList();
-                return Ok( new{result=_result, message="sucess"});
+                return Ok( new{result=_result, message="success"});
             }
             catch (Exception ex)
             {
@@ -2854,6 +2856,274 @@ namespace Backend.Controllers
 
         //     return Ok(new {result = result});
         // }
+
+        [HttpGet("Journal")]
+        public IActionResult Journal()
+        {
+            // IEnumerable<Popaper> values = _databaseContext.Popaper.ToList();
+            List<Transactions> result = new List<Transactions>();
+            
+            double DIESELTank = 30000;
+            double GASOHOL95Tank = 40000;
+            int DISELLots = 25000;
+            int GASOHOL95Lots = 20000;
+            // Popaper result = new Popaper();
+            var values = (from p in _databaseContext.Popaper
+                            join g in _databaseContext.Gas on p.Item equals g.GasId
+                            join c in _databaseContext.CustomerInfo on p.CustomerId equals c.CustomerId
+                            join cp in _databaseContext.CostPriceGas on p.UnitPriceId equals cp.GasPriceId
+                            join t in _databaseContext.Truck on p.TruckId equals t.TruckId
+                            select new {
+                                p.Date,
+                                p.PoNo,
+                                p.PaymentNo,
+                                g.GasType,
+                                cp.Price,
+                                cp.Cost,
+                                p.Quantity,
+                                p.Amount,
+                                p.CustomerId,
+                                c.Name,
+                                c.TaxPayerId,
+                                c.PhoneNo,
+                                p.TruckId,
+                                t.TruckDriverName
+                            }).Where( o => Convert.ToString(o.Date) != "2018-03-31" ).ToList();
+
+            int i = 0;
+            int n = 1;
+            int count = values.Count();
+            foreach(var item in values)
+            {
+                if(DIESELTank < 20000)
+                {
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Inventory-DIESEL";
+                    result[i].Amount = item.Cost*DISELLots;
+                    result[i].RefNo = "157";
+                    result[i].Type = "Debit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Account Payable";
+                    result[i].Amount = item.Cost*DISELLots;
+                    result[i].RefNo = "201";
+                    result[i].Type = "Credit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+                    DIESELTank += 25000;
+                }
+                if(GASOHOL95Tank < 10000)
+                {
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Inventory-GASOHOL95";
+                    result[i].Amount = item.Cost*GASOHOL95Lots;
+                    result[i].RefNo = "157";
+                    result[i].Type = "Debit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Account Payable";
+                    result[i].Amount = item.Cost*GASOHOL95Lots;
+                    result[i].RefNo = "201";
+                    result[i].Type = "Credit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+                    GASOHOL95Tank += 20000;
+                }
+                result.Add(new Transactions());
+                // result[i].TransactionId = i;
+                result[i].Date = item.Date;
+                result[i].Description = "Account Receivable"+"("+item.TruckId+")";
+                result[i].Amount = item.Amount;
+                result[i].RefNo = "112";
+                result[i].Type = "Debit";
+                result[i].PoNo = item.PoNo;
+                _databaseContext.Transactions.Add(result[i]);
+                _databaseContext.SaveChanges();
+                ++i;
+
+                result.Add(new Transactions());
+                // result[i].TransactionId = i;
+                result[i].Date = item.Date;
+                result[i].Description = "Sale Revenue";
+                result[i].Amount = item.Amount;
+                result[i].RefNo = "400";
+                result[i].Type = "Credit";
+                result[i].PoNo = item.PoNo;
+                _databaseContext.Transactions.Add(result[i]);
+                _databaseContext.SaveChanges();
+                ++i;
+                
+
+                if(item.GasType == "DIESEL")
+                {
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Cost of Goods Sold-DIESEL";
+                    result[i].Amount = item.Cost*item.Quantity;
+                    result[i].RefNo = "730";
+                    result[i].Type = "Debit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+                    
+
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Inventory-DIESEL";
+                    result[i].Amount = item.Cost*item.Quantity;
+                    result[i].RefNo = "157";
+                    result[i].Type = "Credit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+                    
+                    DIESELTank -= item.Quantity;
+                }else if(item.GasType == "GASOHOL95")
+                {
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Cost of Goods Sold-GASOHOL95";
+                    result[i].Amount = item.Cost*item.Quantity;
+                    result[i].RefNo = "730";
+                    result[i].Type = "Debit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+
+                    result.Add(new Transactions());
+                    // result[i].TransactionId = i;
+                    result[i].Date = item.Date;
+                    result[i].Description = "Inventory-GASOHOL95";
+                    result[i].Amount = item.Cost*item.Quantity;
+                    result[i].RefNo = "157";
+                    result[i].Type = "Credit";
+                    result[i].PoNo = item.PoNo;
+                    _databaseContext.Transactions.Add(result[i]);
+                    _databaseContext.SaveChanges();
+                    ++i;
+                    
+                    GASOHOL95Tank -= item.Quantity;
+                }
+                _databaseContext.SaveChanges();
+                // if( count == n )
+                // {
+                    
+                // }
+                // ++n;
+
+            }
+            DateTime mo = new DateTime(2108,03,30);
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Salaries and Wages Expense-Sale Office Staffs";
+            result[i].Amount = (500+400)*2;
+            result[i].RefNo = "726";
+            result[i].Type = "Dedit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Cash";
+            result[i].Amount = (500+400)*2;
+            result[i].RefNo = "101";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Salaries and Wages Expense-Gate Controller";
+            result[i].Amount = 700+550;
+            result[i].RefNo = "726";
+            result[i].Type = "Dedit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Cash";
+            result[i].Amount = 700+550;
+            result[i].RefNo = "101";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Depreciation of Gas Dispenser Machine-DIESEL";
+            result[i].Amount = (15000/12)*4;
+            result[i].RefNo = "840";
+            result[i].Type = "Dedit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Accumulated Depreciation of Gas Dispenser Machine-DIESEL";
+            result[i].Amount = (15000/12)*4;
+            result[i].RefNo = "280";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Depreciation of Gas Dispenser Machine-GASOHOL95";
+            result[i].Amount = (15000/12)*2;
+            result[i].RefNo = "840";
+            result[i].Type = "Dedit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+            _databaseContext.SaveChanges();
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Accumulated Depreciation of Gas Dispenser Machine-GASOHOL95";
+            result[i].Amount = (15000/12)*2;
+            result[i].RefNo = "280";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            ++i;
+
+            _databaseContext.SaveChanges();
+            
+
+            return Ok(new{result=result, message="success"});
+        }
 
 
 
