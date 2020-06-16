@@ -13,5 +13,6 @@ namespace Backend.Models
         public double? Amount { get; set; }
         public string Type { get; set; }
         public string JRefNo { get; set; }
+        public double? Balance { get; set; }
     }
 }

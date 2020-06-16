@@ -3266,10 +3266,39 @@ namespace Backend.Controllers
                         }
                             
                     }
+
+                    int n = 0;
+                    double? b = 0;
+                    foreach(var item in result)
+                    {
+                        if(item.RefNo == "101" || item.RefNo == "112" || item.RefNo == "157")
+                        {
+                            b = item.Type == "Debit" ? b + item.Amount : b - item.Amount;
+                            result[n].Date = item.Date;
+                            result[n].Description = item.Description;
+                            result[n].Amount = item.Amount;
+                            result[n].RefNo = item.RefNo;
+                            result[n].Type = item.Type;
+                            result[n].JRefNo = item.JRefNo;
+                            result[n].Balance = b;
+                        }
+                        else if(item.RefNo == "201")
+                        {
+                            b = item.Type == "Credit" ? b + item.Amount : b - item.Amount;
+
+                            result[n].Date = item.Date;
+                            result[n].Description = item.Description;
+                            result[n].Amount = item.Amount;
+                            result[n].RefNo = item.RefNo;
+                            result[n].Type = item.Type;
+                            result[n].JRefNo = item.JRefNo;
+                            result[n].Balance = b;
+                        }
+                        ++n;
+                    }
                 }
                 return Ok( new{result=result, message="success"});
                 
-                // return Ok( new{result=result, message="success"});
             }
             catch(Exception ex)
             {
