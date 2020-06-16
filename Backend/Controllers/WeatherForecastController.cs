@@ -2876,35 +2876,73 @@ namespace Backend.Controllers
                             select new {
                                 p.Date,
                                 p.PoNo,
-                                p.PaymentNo,
                                 g.GasType,
                                 cp.Price,
                                 cp.Cost,
                                 p.Quantity,
                                 p.Amount,
-                                p.CustomerId,
-                                c.Name,
-                                c.TaxPayerId,
-                                c.PhoneNo,
-                                p.TruckId,
-                                t.TruckDriverName
-                            }).Where( o => Convert.ToString(o.Date) != "2018-03-31" ).ToList();
+                                p.TruckId
+                            }).ToList();
 
             int i = 0;
-            int n = 1;
             int count = values.Count();
+            DateTime bmo = new DateTime(2018,3,1);
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = bmo;
+            result[i].Description = "Beginning Cash";
+            result[i].Amount = 300000;
+            result[i].RefNo = "101";
+            result[i].Type = "Debit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = bmo;
+            result[i].Description = "Share Capital-Ordinary";
+            result[i].Amount = 300000;
+            result[i].RefNo = "311";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = bmo;
+            result[i].Description = "Beginning Inventory";
+            result[i].Amount = (DIESELTank*27.08)+(GASOHOL95Tank*28.08);
+            result[i].RefNo = "157";
+            result[i].Type = "Debit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = bmo;
+            result[i].Description = "Account Payable";
+            result[i].Amount = (DIESELTank*27.08)+(GASOHOL95Tank*28.08);
+            result[i].RefNo = "201";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+            
             foreach(var item in values)
             {
+                
                 if(DIESELTank < 20000)
                 {
                     result.Add(new Transactions());
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
-                    result[i].Description = "Inventory-DIESEL";
+                    result[i].Description = "Inventory - DIESEL";
                     result[i].Amount = item.Cost*DISELLots;
                     result[i].RefNo = "157";
                     result[i].Type = "Debit";
-                    result[i].PoNo = item.PoNo;
                     _databaseContext.Transactions.Add(result[i]);
                     _databaseContext.SaveChanges();
                     ++i;
@@ -2916,7 +2954,6 @@ namespace Backend.Controllers
                     result[i].Amount = item.Cost*DISELLots;
                     result[i].RefNo = "201";
                     result[i].Type = "Credit";
-                    result[i].PoNo = item.PoNo;
                     _databaseContext.Transactions.Add(result[i]);
                     _databaseContext.SaveChanges();
                     ++i;
@@ -2927,11 +2964,10 @@ namespace Backend.Controllers
                     result.Add(new Transactions());
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
-                    result[i].Description = "Inventory-GASOHOL95";
+                    result[i].Description = "Inventory - GASOHOL95";
                     result[i].Amount = item.Cost*GASOHOL95Lots;
                     result[i].RefNo = "157";
                     result[i].Type = "Debit";
-                    result[i].PoNo = item.PoNo;
                     _databaseContext.Transactions.Add(result[i]);
                     _databaseContext.SaveChanges();
                     ++i;
@@ -2943,7 +2979,6 @@ namespace Backend.Controllers
                     result[i].Amount = item.Cost*GASOHOL95Lots;
                     result[i].RefNo = "201";
                     result[i].Type = "Credit";
-                    result[i].PoNo = item.PoNo;
                     _databaseContext.Transactions.Add(result[i]);
                     _databaseContext.SaveChanges();
                     ++i;
@@ -2952,7 +2987,7 @@ namespace Backend.Controllers
                 result.Add(new Transactions());
                 // result[i].TransactionId = i;
                 result[i].Date = item.Date;
-                result[i].Description = "Account Receivable"+"("+item.TruckId+")";
+                result[i].Description = "Account Receivable"+" ("+item.TruckId+")";
                 result[i].Amount = item.Amount;
                 result[i].RefNo = "112";
                 result[i].Type = "Debit";
@@ -2979,7 +3014,7 @@ namespace Backend.Controllers
                     result.Add(new Transactions());
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
-                    result[i].Description = "Cost of Goods Sold-DIESEL";
+                    result[i].Description = "Cost of Goods Sold - DIESEL";
                     result[i].Amount = item.Cost*item.Quantity;
                     result[i].RefNo = "730";
                     result[i].Type = "Debit";
@@ -2992,7 +3027,7 @@ namespace Backend.Controllers
                     result.Add(new Transactions());
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
-                    result[i].Description = "Inventory-DIESEL";
+                    result[i].Description = "Inventory - DIESEL";
                     result[i].Amount = item.Cost*item.Quantity;
                     result[i].RefNo = "157";
                     result[i].Type = "Credit";
@@ -3007,7 +3042,7 @@ namespace Backend.Controllers
                     result.Add(new Transactions());
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
-                    result[i].Description = "Cost of Goods Sold-GASOHOL95";
+                    result[i].Description = "Cost of Goods Sold - GASOHOL95";
                     result[i].Amount = item.Cost*item.Quantity;
                     result[i].RefNo = "730";
                     result[i].Type = "Debit";
@@ -3019,7 +3054,7 @@ namespace Backend.Controllers
                     result.Add(new Transactions());
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
-                    result[i].Description = "Inventory-GASOHOL95";
+                    result[i].Description = "Inventory - GASOHOL95";
                     result[i].Amount = item.Cost*item.Quantity;
                     result[i].RefNo = "157";
                     result[i].Type = "Credit";
@@ -3030,99 +3065,216 @@ namespace Backend.Controllers
                     
                     GASOHOL95Tank -= item.Quantity;
                 }
-                _databaseContext.SaveChanges();
-                // if( count == n )
-                // {
-                    
-                // }
-                // ++n;
+                // _databaseContext.SaveChanges();
 
             }
-            DateTime mo = new DateTime(2108,03,30);
+            DateTime mo = new DateTime(2018,03,31);
             result.Add(new Transactions());
             // result[i].TransactionId = i;
             result[i].Date = mo;
-            result[i].Description = "Salaries and Wages Expense-Sale Office Staffs";
-            result[i].Amount = (500+400)*2;
+            result[i].Description = "Salaries and Wages Expense - Sale Office Staffs";
+            result[i].Amount = ((500+400)*2)*31;
             result[i].RefNo = "726";
-            result[i].Type = "Dedit";
+            result[i].Type = "Debit";
             _databaseContext.Transactions.Add(result[i]);
-            ++i;
             _databaseContext.SaveChanges();
+            ++i;
+            
             result.Add(new Transactions());
             // result[i].TransactionId = i;
             result[i].Date = mo;
             result[i].Description = "Cash";
-            result[i].Amount = (500+400)*2;
+            result[i].Amount = ((500+400)*2)*31;
             result[i].RefNo = "101";
             result[i].Type = "Credit";
             _databaseContext.Transactions.Add(result[i]);
-            ++i;
             _databaseContext.SaveChanges();
+            ++i;
+            
             result.Add(new Transactions());
             // result[i].TransactionId = i;
             result[i].Date = mo;
-            result[i].Description = "Salaries and Wages Expense-Gate Controller";
-            result[i].Amount = 700+550;
+            result[i].Description = "Salaries and Wages Expense - Gate Controller";
+            result[i].Amount = (700+550)*31;
             result[i].RefNo = "726";
-            result[i].Type = "Dedit";
+            result[i].Type = "Debit";
             _databaseContext.Transactions.Add(result[i]);
-            ++i;
             _databaseContext.SaveChanges();
+            ++i;
+            
             result.Add(new Transactions());
             // result[i].TransactionId = i;
             result[i].Date = mo;
             result[i].Description = "Cash";
-            result[i].Amount = 700+550;
+            result[i].Amount = (700+550)*31;
             result[i].RefNo = "101";
             result[i].Type = "Credit";
             _databaseContext.Transactions.Add(result[i]);
-            ++i;
             _databaseContext.SaveChanges();
-            result.Add(new Transactions());
-            // result[i].TransactionId = i;
-            result[i].Date = mo;
-            result[i].Description = "Depreciation of Gas Dispenser Machine-DIESEL";
-            result[i].Amount = (15000/12)*4;
-            result[i].RefNo = "840";
-            result[i].Type = "Dedit";
-            _databaseContext.Transactions.Add(result[i]);
-            ++i;
-            _databaseContext.SaveChanges();
-            result.Add(new Transactions());
-            // result[i].TransactionId = i;
-            result[i].Date = mo;
-            result[i].Description = "Accumulated Depreciation of Gas Dispenser Machine-DIESEL";
-            result[i].Amount = (15000/12)*4;
-            result[i].RefNo = "280";
-            result[i].Type = "Credit";
-            _databaseContext.Transactions.Add(result[i]);
-            ++i;
-            _databaseContext.SaveChanges();
-            result.Add(new Transactions());
-            // result[i].TransactionId = i;
-            result[i].Date = mo;
-            result[i].Description = "Depreciation of Gas Dispenser Machine-GASOHOL95";
-            result[i].Amount = (15000/12)*2;
-            result[i].RefNo = "840";
-            result[i].Type = "Dedit";
-            _databaseContext.Transactions.Add(result[i]);
-            ++i;
-            _databaseContext.SaveChanges();
-            result.Add(new Transactions());
-            // result[i].TransactionId = i;
-            result[i].Date = mo;
-            result[i].Description = "Accumulated Depreciation of Gas Dispenser Machine-GASOHOL95";
-            result[i].Amount = (15000/12)*2;
-            result[i].RefNo = "280";
-            result[i].Type = "Credit";
-            _databaseContext.Transactions.Add(result[i]);
             ++i;
 
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Utility Expense";
+            result[i].Amount = 1500*31;
+            result[i].RefNo = "728";
+            result[i].Type = "Debit";
+            _databaseContext.Transactions.Add(result[i]);
             _databaseContext.SaveChanges();
+            ++i;
             
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Cash";
+            result[i].Amount = 1500*31;
+            result[i].RefNo = "101";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+            
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Depreciation of Gas Dispenser Machine - DIESEL";
+            result[i].Amount = (15000/12)*4;
+            result[i].RefNo = "840";
+            result[i].Type = "Debit";
+            // result[i].PoNo = Convert.ToString(DIESELTank);
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+            
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Accumulated Depreciation of Gas Dispenser Machine - DIESEL";
+            result[i].Amount = (15000/12)*4;
+            result[i].RefNo = "280";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+            
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Depreciation of Gas Dispenser Machine - GASOHOL95";
+            result[i].Amount = (15000/12)*2;
+            result[i].RefNo = "840";
+            result[i].Type = "Debit";
+            // result[i].PoNo = Convert.ToString(GASOHOL95Tank);
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+            
+            result.Add(new Transactions());
+            // result[i].TransactionId = i;
+            result[i].Date = mo;
+            result[i].Description = "Accumulated Depreciation of Gas Dispenser Machine - GASOHOL95";
+            result[i].Amount = (15000/12)*2;
+            result[i].RefNo = "280";
+            result[i].Type = "Credit";
+            _databaseContext.Transactions.Add(result[i]);
+            _databaseContext.SaveChanges();
+            ++i;
+
 
             return Ok(new{result=result, message="success"});
+        }
+
+        [HttpGet("GetJournal/{SelDate}")]
+        public IActionResult GetJournal(DateTime SelDate)
+        {
+            try
+            {
+                var _result = (from j in _databaseContext.Transactions
+                               select new {
+                                   j.Date,
+                                   j.Description,
+                                   j.RefNo,
+                                   j.Amount,
+                                   j.Type
+                               }).Where(o => o.Date == SelDate).ToList();
+                return Ok( new{result=_result, message="success"});
+            }
+            catch(Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
+        }
+
+        [HttpGet("GetLedger/{account}")]
+        public IActionResult GetLedger(string account)
+        {
+            try
+            {
+                List<Ledger> result = new List<Ledger>();
+                var values = (from j in _databaseContext.Transactions
+                               select new {
+                                   j.Date,
+                                   j.Description,
+                                   j.RefNo,
+                                   j.Amount,
+                                   j.Type
+                               }).ToList();
+                
+                if( account == "101" || account == "157" || account == "112" || account == "201" )
+                {
+                    int i = 0;
+                    for(int a = 0;a < values.Count();a++)
+                    {
+                        if( account == "101" || account == "157" )
+                        {
+                            if("Credit" == values[a].Type && account == values[a].RefNo )
+                            {
+                                result.Add(new Ledger());
+                                result[i].Date = values[a].Date;
+                                result[i].Description = values[a-1].Description;
+                                result[i].Amount = values[a].Amount;
+                                result[i].RefNo = values[a].RefNo;
+                                result[i].Type = values[a].Type;
+                                result[i].JRefNo = "J"+Convert.ToString(Convert.ToDateTime(values[a].Date).Day);
+                                ++i;
+                            }else if("Debit" == values[a].Type && account == values[a].RefNo )
+                            {
+                                result.Add(new Ledger());
+                                result[i].Date = values[a].Date;
+                                result[i].Description = values[a].Description;
+                                result[i].Amount = values[a].Amount;
+                                result[i].RefNo = values[a].RefNo;
+                                result[i].Type = values[a].Type;
+                                result[i].JRefNo = "J"+Convert.ToString(Convert.ToDateTime(values[a].Date).Day);
+                                ++i;
+                            }
+                        }else
+                        {
+                            if( account == values[a].RefNo )
+                            {
+                                result.Add(new Ledger());
+                                result[i].Date = values[a].Date;
+                                result[i].Description = values[a].Description;
+                                result[i].Amount = values[a].Amount;
+                                result[i].RefNo = values[a].RefNo;
+                                result[i].Type = values[a].Type;
+                                result[i].JRefNo = "J"+Convert.ToString(Convert.ToDateTime(values[a].Date).Day);
+                                ++i;
+                            }
+                            
+                        }
+                            
+                    }
+                }
+                return Ok( new{result=result, message="success"});
+                
+                // return Ok( new{result=result, message="success"});
+            }
+            catch(Exception ex)
+            {
+                return NotFound( new{result=ex, message="fail"});
+            }
         }
 
 
