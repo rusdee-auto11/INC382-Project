@@ -177,7 +177,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string DDFVurl = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQmlrltdQkjUKd9XFOXW_NVgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIEFNT1VOVCBGSUxMSU5HIFZPTFVNRSAoRElFU0VMKQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -265,7 +265,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQDxYI2MtknUekXOTzxhWuSAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIENZQ0xFIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -309,7 +309,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQqoYYOAfpfEiVOWL4oRoFxAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIENZQ0xFIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -353,7 +353,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQtMZrpKeMDke_MQ-2GaHVHgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgV0FJVElORyBUSU1F/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -397,7 +397,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvWLBAFJ2TUWlf-WK9vpFHwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBXQUlUSU5HIFRJTUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -441,7 +441,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQEgikTfxvRESnesr4fjxtxwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -485,7 +485,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQEUq7d1pTYkeLV6ga4uj7VQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -529,7 +529,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQqbtERL5W3U-gwc7iicbzjwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFdBSVRJTkcgVElNRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -573,7 +573,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQL_OscsyLX0eWtxZ14Ua6xwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfERBSUxZIE5VTUJFUiBPRiBUUlVDS1MgSU4/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -617,7 +617,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw0f0eqzt_6hG4hVTudaRgyQakbfH4mtk0K7bfkI2WqtEgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEVYSVQgR0FURXxEQUlMWSBOVU1CRVIgT0YgVFJVQ0tTIE9VVA/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -661,7 +661,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQX_mCw5ZM70q7toyh3At2mwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgTlVNQkVSIE9GIFFVRVVF/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -705,7 +705,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQvBfMURpMYkaVbKFKIpaIuQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBOVU1CRVIgT0YgUVVFVUU/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -749,7 +749,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQyyGzd5Z_B0Sf7C0YpVl5sAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -793,7 +793,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQ_-itW4CBpECG0I1jd--QLAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -837,7 +837,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQDQepp_AFMU6McMb3i-j7dgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIE5VTUJFUiBPRiBRVUVVRQ/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -881,7 +881,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQ3g2In2D_20mTm96BjY_jwwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFdJUA/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -925,7 +925,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQSBstWfe-f0qNBPRMLUJ0wQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFdJUA/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -969,7 +969,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwOw4HFTt_6hG4hVTudaRgyQgwkApjFuLEm5dHSOTpMV4gMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXFNBTEUgT0ZGSUNFfFNBTEUgT0ZGSUNFIERBSUxZIEFWRVJBR0UgU0NIX1VUSUxJWkFUSU9O/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -1013,7 +1013,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhw3QL6Mjt_6hG4hVTudaRgyQuGl69bRgKkGm2_WTBtwKkgMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXElOQk9VTkQgV0VJR0hUQlJJREdFfElOQk9VTkQgV0VJR0hCUklER0UgREFJTFkgQVZFUkFHRSBTQ0hfVVRJTElaQVRJT04/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -1057,7 +1057,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwny3Vcjt_6hG4hVTudaRgyQHT_vByThs0uqV9drwYFHNwMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXERJRVNFTCBCQVl8RElFU0VMIEJBWSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -1101,7 +1101,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwwBQnlDt_6hG4hVTudaRgyQwVFMF7crK0-2lxA8HObuFAMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXEdBU09IT0w5NSBCQVl8R0FTT0hPTDk1IEJBWSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 
@@ -1145,7 +1145,7 @@ namespace Backend.Controllers
                 TimeSpan value =  today.Subtract(selDate);
                 
                 string starttime = Convert.ToString(Convert.ToInt32(value.TotalDays));
-                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 1);
+                string endtime = Convert.ToString(Convert.ToInt32(value.TotalDays) - 0.5);
 
                 string url = $@"https://202.44.12.146/piwebapi/streams/F1AbEP9i6VrUz70i0bz0vbTQKhwpSJFnjt_6hG4hVTudaRgyQNGiQoZDhcES7qpjbxLW-fQMjAyLjQ0LjEyLjE0NlxHUk9VUDJfNFxGQUNUT1JZXE9VVEJPVU5EIFdFSUdIVEJSSURHRXxPVVRCT1VORCBXRUlHSEJSSURHRSBEQUlMWSBBVkVSQUdFIFNDSF9VVElMSVpBVElPTg/recorded?starttime=*-{starttime}d&endtime=*-{endtime}d";
 

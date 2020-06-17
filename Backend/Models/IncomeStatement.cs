@@ -19,5 +19,11 @@ namespace Backend.Models
         public double? UtilityExp { get; set; }
         public double? Depreciation { get; set; }
         public double? NetIncome { get; set; }
+        public double? BeginGAS95 { get; set; }
+        public double? BeginDIESEL { get; set; }
+        public double? PurchaseGAS95 { get; set; }
+        public double? PurchaseDIESEL { get; set; }
+        public double? EndGAS95 { get; set; }
+        public double? EndDIESEL { get; set; }
     }
 }
