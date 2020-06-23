@@ -185,50 +185,72 @@ namespace Backend.Controllers
 
                 int i = 0;
                 int count = values.Count();
-                DateTime bmo = new DateTime(2018, 3, 1);
-                result.Add(new Transactions());
+                // DateTime bmo = new DateTime(2018, 3, 1);
+                // result.Add(new Transactions());
                 // result[i].TransactionId = i;
-                result[i].Date = bmo;
-                result[i].Description = "Beginning Cash";
-                result[i].Amount = 300000;
-                result[i].RefNo = "101";
-                result[i].Type = "Debit";
-                _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
-                ++i;
+                // result[i].Date = bmo;
+                // result[i].Description = "Beginning Cash";
+                // result[i].Amount = 300000;
+                // result[i].RefNo = "101";
+                // result[i].Type = "Debit";
+                // _databaseContext.Transactions.Add(result[i]);
+                // _databaseContext.SaveChanges();
+                // ++i;
 
-                result.Add(new Transactions());
+                // result.Add(new Transactions());
                 // result[i].TransactionId = i;
-                result[i].Date = bmo;
-                result[i].Description = "Share Capital-Ordinary";
-                result[i].Amount = 300000;
-                result[i].RefNo = "311";
-                result[i].Type = "Credit";
-                _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
-                ++i;
+                // result[i].Date = bmo;
+                // result[i].Description = "Share Capital-Ordinary";
+                // result[i].Amount = 300000;
+                // result[i].RefNo = "311";
+                // result[i].Type = "Credit";
+                // _databaseContext.Transactions.Add(result[i]);
+                // _databaseContext.SaveChanges();
+                // ++i;
 
-                result.Add(new Transactions());
+                // result.Add(new Transactions());
                 // result[i].TransactionId = i;
-                result[i].Date = bmo;
-                result[i].Description = "Beginning Inventory";
-                result[i].Amount = (DIESELTank * 27.08) + (GASOHOL95Tank * 28.08);
-                result[i].RefNo = "157";
-                result[i].Type = "Debit";
-                _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
-                ++i;
+                // result[i].Date = bmo;
+                // result[i].Description = "Beginning Inventory - DIESEL";
+                // result[i].Amount = (DIESELTank * 27.08);
+                // result[i].RefNo = "157";
+                // result[i].Type = "Debit";
+                // _databaseContext.Transactions.Add(result[i]);
+                // _databaseContext.SaveChanges();
+                // ++i;
 
-                result.Add(new Transactions());
+                // result.Add(new Transactions());
                 // result[i].TransactionId = i;
-                result[i].Date = bmo;
-                result[i].Description = "Account Payable";
-                result[i].Amount = (DIESELTank * 27.08) + (GASOHOL95Tank * 28.08);
-                result[i].RefNo = "201";
-                result[i].Type = "Credit";
-                _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
-                ++i;
+                // result[i].Date = bmo;
+                // result[i].Description = "Account Payable";
+                // result[i].Amount = (DIESELTank * 27.08);
+                // result[i].RefNo = "201";
+                // result[i].Type = "Credit";
+                // _databaseContext.Transactions.Add(result[i]);
+                // _databaseContext.SaveChanges();
+                // ++i;
+
+                // result.Add(new Transactions());
+                // result[i].TransactionId = i;
+                // result[i].Date = bmo;
+                // result[i].Description = "Beginning Inventory - GASOHOL95";
+                // result[i].Amount = (GASOHOL95Tank * 28.08);
+                // result[i].RefNo = "159";
+                // result[i].Type = "Debit";
+                // _databaseContext.Transactions.Add(result[i]);
+                // _databaseContext.SaveChanges();
+                // ++i;
+
+                // result.Add(new Transactions());
+                // result[i].TransactionId = i;
+                // result[i].Date = bmo;
+                // result[i].Description = "Account Payable";
+                // result[i].Amount = (GASOHOL95Tank * 28.08);
+                // result[i].RefNo = "201";
+                // result[i].Type = "Credit";
+                // _databaseContext.Transactions.Add(result[i]);
+                // _databaseContext.SaveChanges();
+                // ++i;
 
                 foreach (var item in values)
                 {
@@ -265,7 +287,7 @@ namespace Backend.Controllers
                         result[i].Date = item.Date;
                         result[i].Description = "Inventory - GASOHOL95";
                         result[i].Amount = item.Cost * GASOHOL95Lots;
-                        result[i].RefNo = "157";
+                        result[i].RefNo = "159";
                         result[i].Type = "Debit";
                         _databaseContext.Transactions.Add(result[i]);
                         _databaseContext.SaveChanges();
@@ -287,7 +309,7 @@ namespace Backend.Controllers
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
                     result[i].Description = "Account Receivable" + " (" + item.TruckId + ")";
-                    result[i].Amount = item.Amount;
+                    result[i].Amount = item.Amount*1.07;
                     result[i].RefNo = "112";
                     result[i].Type = "Debit";
                     result[i].PoNo = item.PoNo;
@@ -299,7 +321,7 @@ namespace Backend.Controllers
                     // result[i].TransactionId = i;
                     result[i].Date = item.Date;
                     result[i].Description = "Sale Revenue";
-                    result[i].Amount = item.Amount;
+                    result[i].Amount = item.Amount*1.07;
                     result[i].RefNo = "400";
                     result[i].Type = "Credit";
                     result[i].PoNo = item.PoNo;
@@ -356,7 +378,7 @@ namespace Backend.Controllers
                         result[i].Date = item.Date;
                         result[i].Description = "Inventory - GASOHOL95";
                         result[i].Amount = item.Cost * item.Quantity;
-                        result[i].RefNo = "157";
+                        result[i].RefNo = "159";
                         result[i].Type = "Credit";
                         result[i].PoNo = item.PoNo;
                         _databaseContext.Transactions.Add(result[i]);
@@ -465,7 +487,7 @@ namespace Backend.Controllers
                 result[i].Amount = (15000 / 12) * 2;
                 result[i].RefNo = "840";
                 result[i].Type = "Debit";
-                result[i].PoNo = Convert.ToString(GASOHOL95Tank);
+                // result[i].PoNo = Convert.ToString(GASOHOL95Tank);
                 _databaseContext.Transactions.Add(result[i]);
                 _databaseContext.SaveChanges();
                 ++i;
@@ -520,6 +542,8 @@ namespace Backend.Controllers
             try
             {
                 List<Ledger> result = new List<Ledger>();
+                double DIESELTank = 30000;
+                double GASOHOL95Tank = 40000;
                 var values = (from j in _databaseContext.Transactions
                               select new
                               {
@@ -530,12 +554,66 @@ namespace Backend.Controllers
                                   j.Type
                               }).ToList();
 
-                if (account == "101" || account == "157" || account == "112" || account == "201")
+                if (account == "101" || account == "157" || account == "159" || account == "112" || account == "201")
                 {
                     int i = 0;
+                    DateTime bmo = new DateTime(2018, 3, 1);
+                    if(account == "101")
+                    {
+                        result.Add(new Ledger());
+                        result[i].Date = bmo;
+                        result[i].Description = "Beginning Cash";
+                        result[i].Amount = 300000;
+                        result[i].RefNo = "101";
+                        result[i].Type = "Debit";
+                        result[i].JRefNo = "J1";
+                        ++i;
+                    }
+                    else if(account == "157")
+                    {
+                        result.Add(new Ledger());
+                        result[i].Date = bmo;
+                        result[i].Description = "Beginning Inventory - DIESEL";
+                        result[i].Amount = DIESELTank * 27.08;
+                        result[i].RefNo = "157";
+                        result[i].Type = "Debit";
+                        result[i].JRefNo = "J1";
+                        ++i;
+                    }
+                    else if(account == "159")
+                    {
+                        result.Add(new Ledger());
+                        result[i].Date = bmo;
+                        result[i].Description = "Beginning Inventory - GASOHOL95";
+                        result[i].Amount = GASOHOL95Tank * 28.08;
+                        result[i].RefNo = "159";
+                        result[i].Type = "Debit";
+                        result[i].JRefNo = "J1";
+                        ++i;
+                    }
+                    else if(account == "201")
+                    {
+                        result.Add(new Ledger());
+                        result[i].Date = bmo;
+                        result[i].Description = "Account Payable";
+                        result[i].Amount = (DIESELTank * 27.08);
+                        result[i].RefNo = "201";
+                        result[i].Type = "Credit";
+                        result[i].JRefNo = "J1";
+                        ++i;
+
+                        result.Add(new Ledger());
+                        result[i].Date = bmo;
+                        result[i].Description = "Account Payable";
+                        result[i].Amount = (DIESELTank * 28.08);
+                        result[i].RefNo = "201";
+                        result[i].Type = "Credit";
+                        result[i].JRefNo = "J1";
+                        ++i;
+                    }
                     for (int a = 0; a < values.Count(); a++)
                     {
-                        if (account == "101" || account == "157")
+                        if (account == "101" || account == "157" || account == "159")
                         {
                             if ("Credit" == values[a].Type && account == values[a].RefNo)
                             {
@@ -582,7 +660,7 @@ namespace Backend.Controllers
                     double? b = 0;
                     foreach (var item in result)
                     {
-                        if (item.RefNo == "101" || item.RefNo == "112" || item.RefNo == "157")
+                        if (item.RefNo == "101" || item.RefNo == "112" || item.RefNo == "157" || item.RefNo == "159")
                         {
                             b = item.Type == "Debit" ? b + item.Amount : b - item.Amount;
                             result[n].Date = item.Date;
@@ -683,11 +761,11 @@ namespace Backend.Controllers
                     {
                         DP = DP + item1.Amount;
                     }
-                    else if (item1.RefNo == "157" && item1.Description == "Inventory - GASOHOL95" && item1.Type == "Debit")
+                    else if (item1.RefNo == "159" && item1.Type == "Debit")
                     {
                         PG = PG + item1.Amount;
                     }
-                    else if (item1.RefNo == "157" && item1.Description == "Inventory - DIESEL" && item1.Type == "Debit")
+                    else if (item1.RefNo == "157" && item1.Type == "Debit")
                     {
                         PD = PD + item1.Amount;
                     }

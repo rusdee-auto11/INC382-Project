@@ -5,7 +5,6 @@ namespace Backend.Models
 {
     public partial class Ledger
     {
-        public int TransactionId { get; set; }
         public DateTime? Date { get; set; }
         public string Description { get; set; }
         public string RefNo { get; set; }
