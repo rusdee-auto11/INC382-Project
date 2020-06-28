@@ -153,7 +153,7 @@ namespace Backend.Controllers
         //     return Ok(new {result = result});
         // }
 
-        // [HttpGet("createJournal")]
+        [HttpGet("createJournal")]
         public IActionResult createJournal()
         {
             try
@@ -265,7 +265,7 @@ namespace Backend.Controllers
                         result[i].RefNo = "157";
                         result[i].Type = "Debit";
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
 
                         result.Add(new Transactions());
@@ -276,7 +276,7 @@ namespace Backend.Controllers
                         result[i].RefNo = "201";
                         result[i].Type = "Credit";
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
                         DIESELTank += 25000;
                     }
@@ -290,7 +290,7 @@ namespace Backend.Controllers
                         result[i].RefNo = "159";
                         result[i].Type = "Debit";
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
 
                         result.Add(new Transactions());
@@ -301,7 +301,7 @@ namespace Backend.Controllers
                         result[i].RefNo = "201";
                         result[i].Type = "Credit";
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
                         GASOHOL95Tank += 20000;
                     }
@@ -314,7 +314,7 @@ namespace Backend.Controllers
                     result[i].Type = "Debit";
                     result[i].PoNo = item.PoNo;
                     _databaseContext.Transactions.Add(result[i]);
-                    _databaseContext.SaveChanges();
+                    // _databaseContext.SaveChanges();
                     ++i;
 
                     result.Add(new Transactions());
@@ -326,7 +326,7 @@ namespace Backend.Controllers
                     result[i].Type = "Credit";
                     result[i].PoNo = item.PoNo;
                     _databaseContext.Transactions.Add(result[i]);
-                    _databaseContext.SaveChanges();
+                    // _databaseContext.SaveChanges();
                     ++i;
 
 
@@ -341,7 +341,7 @@ namespace Backend.Controllers
                         result[i].Type = "Debit";
                         result[i].PoNo = item.PoNo;
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
 
 
@@ -354,7 +354,7 @@ namespace Backend.Controllers
                         result[i].Type = "Credit";
                         result[i].PoNo = item.PoNo;
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
 
                         DIESELTank -= item.Quantity;
@@ -370,7 +370,7 @@ namespace Backend.Controllers
                         result[i].Type = "Debit";
                         result[i].PoNo = item.PoNo;
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
 
                         result.Add(new Transactions());
@@ -382,7 +382,7 @@ namespace Backend.Controllers
                         result[i].Type = "Credit";
                         result[i].PoNo = item.PoNo;
                         _databaseContext.Transactions.Add(result[i]);
-                        _databaseContext.SaveChanges();
+                        // _databaseContext.SaveChanges();
                         ++i;
 
                         GASOHOL95Tank -= item.Quantity;
@@ -399,7 +399,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "726";
                 result[i].Type = "Debit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -410,7 +410,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "101";
                 result[i].Type = "Credit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -421,7 +421,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "726";
                 result[i].Type = "Debit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -432,7 +432,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "101";
                 result[i].Type = "Credit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -443,7 +443,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "728";
                 result[i].Type = "Debit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -454,7 +454,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "101";
                 result[i].Type = "Credit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -466,7 +466,7 @@ namespace Backend.Controllers
                 result[i].Type = "Debit";
                 // result[i].PoNo = Convert.ToString(DIESELTank);
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -477,7 +477,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "280";
                 result[i].Type = "Credit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -489,7 +489,7 @@ namespace Backend.Controllers
                 result[i].Type = "Debit";
                 // result[i].PoNo = Convert.ToString(GASOHOL95Tank);
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
                 result.Add(new Transactions());
@@ -500,7 +500,7 @@ namespace Backend.Controllers
                 result[i].RefNo = "280";
                 result[i].Type = "Credit";
                 _databaseContext.Transactions.Add(result[i]);
-                _databaseContext.SaveChanges();
+                // _databaseContext.SaveChanges();
                 ++i;
 
 
@@ -558,6 +558,7 @@ namespace Backend.Controllers
                 {
                     int i = 0;
                     DateTime bmo = new DateTime(2018, 3, 1);
+                    DateTime emo = new DateTime(2018, 3, 31);
                     if(account == "101")
                     {
                         result.Add(new Ledger());
@@ -684,6 +685,29 @@ namespace Backend.Controllers
                             result[n].Balance = b;
                         }
                         ++n;
+                    }
+
+                    if (account == "101" || account == "112" || account == "157" || account == "159")
+                    {
+                        result.Add(new Ledger());
+                        result[i].Date = emo;
+                        result[i].Description = "Carry Forward";
+                        result[i].Amount = b;
+                        result[i].RefNo = account;
+                        result[i].Type = "Credit";
+                        result[i].JRefNo = "J31";
+                        result[i].Balance = b -= b;
+                    }
+                    else if (account == "201")
+                    {
+                        result.Add(new Ledger());
+                        result[i].Date = emo;
+                        result[i].Description = "Carry Forward";
+                        result[i].Amount = b;
+                        result[i].RefNo = account;
+                        result[i].Type = "Debit";
+                        result[i].JRefNo = "J31";
+                        result[i].Balance = b -= b;
                     }
                 }
                 return Ok(new { result = result, message = "success" });
